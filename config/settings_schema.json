@@ -4,8 +4,8 @@
     "theme_name": "Fashionopolism",
     "theme_author": "Underground",
     "theme_version": "6.2",
-    "theme_documentation_url": "https:////www.weareunderground.com/products/fashionopolism-responsive-empire",
-    "theme_support_url": "http://support.undergroundmedia.co.uk/"
+    "theme_documentation_url": "https:\/\/\/\/www.weareunderground.com\/products\/fashionopolism-responsive-empire",
+    "theme_support_url": "http:\/\/support.undergroundmedia.co.uk\/"
   },
   {
     "name": "Favicon",
@@ -616,7 +616,7 @@
       },
       {
         "type": "paragraph",
-        "content": "Learn more about [Media types](https:\/\/help.shopify.com/en\/manual\/products\/product-media\)"
+        "content": "Learn more about [Media types](https:\/\/help.shopify.com\/en\/manual\/products\/product-media)"
       },
       {
         "type": "header",
@@ -669,7 +669,7 @@
           }
         ],
         "default": "no_hover_effect",
-        "info": "On swatch hover requires an image to be assigned to a variant [See instructions](https://help.shopify.com/manual/products/product-variant-images#add-images-to-existing-variants)"
+        "info": "On swatch hover requires an image to be assigned to a variant [See instructions](https:\/\/help.shopify.com\/manual\/products\/product-variant-images#add-images-to-existing-variants)"
       },
       {
         "type": "header",
@@ -749,37 +749,37 @@
         "type": "text",
         "id": "twittername",
         "label": "Your Twitter link",
-        "info": "Example: //twitter.com/shopify"
+        "info": "Example: \/\/twitter.com\/shopify"
       },
       {
         "type": "text",
         "id": "facebook_url",
         "label": "Your facebook url",
-        "info": "Example: //facebook.com/shopify"
+        "info": "Example: \/\/facebook.com\/shopify"
       },
       {
         "type": "text",
         "id": "pinterest_url",
         "label": "Your Pinterest url",
-        "info": "Example: //pinterest.com/shopify"
+        "info": "Example: \/\/pinterest.com\/shopify"
       },
       {
         "type": "text",
         "id": "tumblr_url",
         "label": "Your Tumblr url",
-        "info": "Example: //shopify.tumblr.com"
+        "info": "Example: \/\/shopify.tumblr.com"
       },
       {
         "type": "text",
         "id": "youtube_url",
         "label": "Your YouTube url",
-        "info": "Example: //youtube.com/shopify"
+        "info": "Example: \/\/youtube.com\/shopify"
       },
       {
         "type": "text",
         "id": "googleplus_url",
         "label": "Your Google+ url",
-        "info": "Example: //plus.google.com/shopify"
+        "info": "Example: \/\/plus.google.com\/shopify"
       },
       {
         "type": "text",

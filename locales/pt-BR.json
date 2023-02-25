@@ -39,8 +39,8 @@
       "submit": "Pesquisar"
     },
     "social": {
-   	  "share": "Compartilhar"
-   	},
+      "share": "Compartilhar"
+    },
     "currency": {
       "dropdown_label": "Moeda"
     },
@@ -169,7 +169,7 @@
       "city": "Cidade",
       "country": "País",
       "province": "Província",
-      "zip": "CEP/Código postal",
+      "zip": "CEP\/Código postal",
       "phone": "Telefone",
       "set_default": "Definir como endereço padrão",
       "add": "Adicionar endereço",

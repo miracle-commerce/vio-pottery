@@ -39,8 +39,8 @@
       "submit": "Recherche"
     },
     "social": {
-   	  "share": "Partager"
-   	},
+      "share": "Partager"
+    },
     "currency": {
       "dropdown_label": "Devise"
     },
