@@ -2218,26 +2218,7 @@
           "sort_c": ""
         }
       },
-      "product-template": {
-        "type": "product-template",
-        "settings": {
-          "vendor": false,
-          "show_quantity": true,
-          "show_sku": true,
-          "product_variants": "drop-downs",
-          "use_swatch_images": false,
-          "swatch_shape": "circles",
-          "show_payment_button": true,
-          "thumbnail_position": "bottom",
-          "click_to_enlarge": true,
-          "enable_video_looping": false,
-          "popup_one": "",
-          "popup_two": "",
-          "popup_three": "",
-          "popup_four": true,
-          "show_social": true
-        }
-      },
+      
       "blog-template": {
         "type": "blog-template",
         "settings": {
@@ -2284,15 +2265,7 @@
           "button_text_color": "#ffffff"
         }
       },
-      "product-recommendations": {
-        "type": "product-recommendations",
-        "settings": {
-          "show_product_recommendations": true,
-          "product_recommendations_heading": "You may also like",
-          "limit": 4,
-          "show_recommendations_vendor": false
-        }
-      },
+      
       "aboutVideo": {
         "type": "aboutVideo",
         "settings": {
