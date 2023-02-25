@@ -1,0 +1,15 @@
+{
+  "name":"Default Search Template",
+  "sections":{
+    "main": {
+      "type": "search-template",
+      "settings": {
+        "grid": 4,
+        "rows": 6
+      }
+    }
+  },
+  "order":[
+    "main"
+  ]
+}

@@ -2210,13 +2210,6 @@
           "main_nav": "main-menu"
         }
       },
-      "search-template": {
-        "type": "search-template",
-        "settings": {
-          "grid": 4,
-          "rows": 6
-        }
-      },
       "password-template": {
         "type": "password-template",
         "settings": {
