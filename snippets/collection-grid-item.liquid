@@ -1,0 +1,33 @@
+{% if collection.empty? %}
+  {% comment %}add default state for collection block in storefront editor{% endcomment %}
+  {% capture collection_title %}{{ 'homepage.onboarding.collection_title' | t }}{% endcapture %}
+  {% capture collection_image_url %}{% endcapture %}
+{% else %}
+  {% capture collection_title %}{{ collection.title }}{% endcapture %}
+{% endif %}
+
+<div class="product-index {{ grid_item_width }}" data-alpha="{{ collection.title }}">
+  <div class="prod-container">
+    <a href="{{ collection.url }}" title="{{ collection_title }}">
+      {% if collection.image %}
+      {% include "basic-responsive-image", type: collection.image %}
+      <noscript>
+        <img src="{{ collection.image | img_url: '1024x1024' }}" alt="{{ collection__image.alt | escape }}" class="collection__image">
+      </noscript>
+    {% else %}
+      {% include "basic-responsive-image", type: collection.products.first.featured_image %}
+      <noscript>
+        <img src="{{ collection.products.first.featured_image | img_url: '1024x1024' }}" alt="{{ collection.products.first.featured_image.alt | escape }}" class="collection__image">
+      </noscript>
+    {% endif %}
+    </a>
+  </div>
+  <div class="product-info">
+    <a href="{{ collection.url }}" title="{{ collection_title }}">
+      <h3>{{ collection.title }}</h3>
+      {%- if section.settings.collection_count -%}
+        <p>{{ collection.products_count }} {{ 'collections.general.items' | t }}</p>
+      {%- endif -%}
+    </a>
+  </div>
+</div>

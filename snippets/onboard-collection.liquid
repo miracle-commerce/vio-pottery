@@ -1,0 +1,34 @@
+{% comment %}Used for home page sections only when featured collections is chosen but no content has been selected{% endcomment %}
+{%- assign col_limit = section.settings.homepage_collection_limit -%}
+<div id="{{ block.id }}-tab-{{ forloop.index }}"{{ block.shopify_attributes }}>  
+    <div class="product-collection-carousel">
+	{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+       {%- assign placeholder = 'collection-' | append: current -%}
+      <div class="product-index onboard" data-alpha="{{ collection.title }}">          
+        {{ placeholder | placeholder_svg_tag }}
+      </div>  
+      {% for i in (1..col_limit) %}
+      <div class="product-car">
+        <div class="product-index"> 
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {%- assign placeholder = 'product-' | append: current -%}
+          <div class="prod-container">
+            <div class="prod-image onboard">
+              <a href="#">
+               {{ placeholder | placeholder_svg_tag }}
+              </a>
+            </div>
+          </div>
+          <div class="product-info"> 
+            <a href="#"> 
+              <h3>Product {{ forloop.index }}</h3>
+            </a>
+            <div class="price">
+              <div class="prod-price">9.99</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>

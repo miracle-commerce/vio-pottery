@@ -1,0 +1,28 @@
+{% for item in cart.items %}
+<div class="quick-cart-item">
+  <div class="desktop-2 centered">
+    <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
+      <img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />
+    </a>
+  </div>
+  <div class="desktop-4 centered l-align">
+    <a href="{{ item.url }}">{{ item.product.title }}</a>
+  </div>
+    <div class="desktop-2 centered">
+      {{ item.price | money }}
+    </div>
+
+    <div class="desktop-2 centered">
+      {{ item.quantity }}
+    </div>
+
+    <div class="desktop-2 centered">
+      {{ item.line_price | money }}
+    </div>
+
+    <div class="desktop-1 centered">
+      <a class="remove_item" href="#" data-id="{{ item.variant.id }}"><i class="fa fa-times"></i></a>
+    </div>
+</div>
+<div class="clear"></div>
+{% endfor %}

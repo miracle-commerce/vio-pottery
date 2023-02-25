@@ -1,0 +1,111 @@
+<nav id="nav" {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
+  {% if section.settings.full_width_header %}<div class="row">{% endif %}
+  <div id="navigation" class="row">
+    <ul id="nav" class="desktop-12 mobile-3">
+      {% assign menu = linklists[section.settings.main_nav] %}
+      {% for link in menu.links %}
+
+      {% assign meganav = false %}
+      {% for block in section.blocks %}
+      {% if block.settings.menu_item == link.title %}
+      {% capture megalink %}
+
+      <!-- Start megamenu -->
+      <li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">{{ link.title | link_to: link.url }}
+        <ul class="megamenu">
+          <div class="mega-container">
+            {% if block.settings.nav_image != blank %}
+              <span class="desktop-3 tablet-hide mm-image">
+                <a href="{{ block.settings.nav_promo_link }}">
+                  {% include 'basic-responsive-image', type: block.settings.nav_image %}
+                  <noscript>
+                    <img src="{{ block.settings.nav_image | img_url: '300x' }}" alt="block.settings.nav_image.alt">
+                  </noscript>
+                </a>
+              </span>
+            {% endif %}
+            <span class="{% if block.settings.nav_image != blank %}desktop-9{% else %}desktop-12{% endif %} tablet-6">
+              {% case link.links.size %}
+              {% when 0 %}
+              {% when 1 %}
+              {% assign column_width = 'desktop-12 tablet-fourth' %}
+              {% when 2 %}
+              {% assign column_width = 'desktop-6 tablet-fourth' %}
+              {% when 3 or 6 %}
+              {% assign column_width = 'desktop-4 tablet-fourth' %}
+              {% else %}
+              {% assign column_width = 'desktop-3 tablet-fourth' %}
+              {% endcase %}
+              {% for sub_link in link.links %}
+              <li class="{{ column_width }}">
+                <h4><a href="{{ sub_link.url }}">{{ sub_link.title }}</a></h4>
+                {% if sub_link.links != blank %}
+                <ul class="mega-stack">
+                  {% for sub_sub_link in sub_link.links %}
+                  <li><a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </span>
+          </div>
+        </ul>
+      </li>
+      {% endcapture %}
+      {% assign meganav = true %}
+      {% endif %}
+      {% endfor %}
+      {% if meganav %}
+      {{ megalink }}
+      <!-- End megamenu & start multi column where needed -->
+      {% elsif link.links != blank %}
+        <!-- How many links to show per column -->
+        {% assign num = section.settings.linklist_breakpoint | plus:0 %}
+        <!-- How many links in this list -->
+        {% assign numx = linklists[link.handle].links.size %}
+        <!-- Number of links divided by number per column -->
+        {% assign numy = numx | divided_by: num %}
+        <!-- Modulo balance of total links divided by links per column -->
+        {% assign mod = numx | modulo:num %}
+        <!-- Calculate the modulo offset -->
+        {% assign mod_offset = numx | minus:mod %}
+
+        {% comment %}
+        {{ num }} chosen number of links per column
+        {{ numx }} number of links in the linklist
+        {{ numy }} Columns needed
+        {{ mod }}  Balance for last column
+        {{ mod_offset }} links to offset before adding mod
+        {% endcomment %}
+
+      <!-- Start math for calculated multi column dropdowns -->
+      <li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">{{ link.title | link_to: link.url }}
+        {% if link.links.size > num %}
+		      {% include 'navigation-columns' %}
+        <!-- if the list is less than the chosen number -->
+        {% else %}
+        <ul class="submenu">
+        {% for sub_link in link.links %}
+          <li class="has_sub_menu" aria-haspopup="true" aria-expanded="false"><a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+             {% if sub_link.links != blank %}
+            <ul class="nested">
+              {% for sub_sub_link in sub_link.links %}
+              <li><a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      <!-- stop doing the math -->
+      {% else %}
+      <li {% if link.handle contains "about" or link.handle contains "accessories" or link.handle contains "garden-tools" or link.handle == "books" or link.handle == "anise-pots" %}class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ link.title | link_to: link.url }}</li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% if section.settings.full_width_header %}</div>{% endif %}
+</nav>

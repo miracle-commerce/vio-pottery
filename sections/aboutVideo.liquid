@@ -1,0 +1,164 @@
+<div class="homepage-section video" data-section-id="{{ section.id }}" style="max-width:1024px;margin:0 auto">
+ {% if section.settings.full_width %}
+    <div class="gridlock-fluid videoGrid">
+      <h3>{{section.settings.heading_text_1}}</h3>
+      <div class="video-wrapper">
+        {% if section.settings.video_url == blank %}
+          <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% if section.settings.video_url.type == "youtube" %}
+          <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+          {% if section.settings.video_url.type == "vimeo" %}
+            <iframe src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+     <div class="gridlock-fluid videoGrid">
+      <h3>{{section.settings.heading_text_2}}</h3>
+      <div class="video-wrapper">
+        {% if section.settings.video_url_1 == blank %}
+          <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% if section.settings.video_url_1.type == "youtube" %}
+          <iframe src="//www.youtube.com/embed/{{ section.settings.video_url_1.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+          {% if section.settings.video_url_1.type == "vimeo" %}
+            <iframe src="//player.vimeo.com/video/{{ section.settings.video_url_1.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+     <div class="gridlock-fluid videoGrid">
+      <h3>{{section.settings.heading_text_3}}</h3>
+      <div class="video-wrapper">
+        {% if section.settings.video_url_2 == blank %}
+          <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% if section.settings.video_url_2.type == "youtube" %}
+          <iframe src="//www.youtube.com/embed/{{ section.settings.video_url_2.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+          {% if section.settings.video_url_2.type == "vimeo" %}
+            <iframe src="//player.vimeo.com/video/{{ section.settings.video_url_2.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="row videoGrid">
+      <div class="desktop-12 tablet-6 mobile-3">
+        <h3>{{section.settings.heading_text_1}}</h3>
+        <div class="video-wrapper">
+          {% if section.settings.video_url == blank %}
+            <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% else %}
+            {% if section.settings.video_url.type == "youtube" %}
+            <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+            {% if section.settings.video_url.type == "vimeo" %}
+              <iframe src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+   <div class="row videoGrid">
+      <div class="desktop-12 tablet-6 mobile-3">
+        <h3>{{section.settings.heading_text_2}}</h3>
+        <div class="video-wrapper">
+          {% if section.settings.video_url_1 == blank %}
+            <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% else %}
+            {% if section.settings.video_url_1.type == "youtube" %}
+            <iframe src="//www.youtube.com/embed/{{ section.settings.video_url_1.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+            {% if section.settings.video_url_1.type == "vimeo" %}
+              <iframe src="//player.vimeo.com/video/{{ section.settings.video_url_1.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+   <div class="row videoGrid">
+      <div class="desktop-12 tablet-6 mobile-3">
+        <h3>{{section.settings.heading_text_3}}</h3>
+        <div class="video-wrapper">
+          {% if section.settings.video_url_2 == blank %}
+            <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% else %}
+            {% if section.settings.video_url_2.type == "youtube" %}
+            <iframe src="//www.youtube.com/embed/{{ section.settings.video_url_2.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+            {% if section.settings.video_url_2.type == "vimeo" %}
+              <iframe src="//player.vimeo.com/video/{{ section.settings.video_url_2.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="rte videoDesc">{{section.settings.text}}</div>
+</div>
+{% schema %}
+{
+   "name":"About Video",
+   "settings":[
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": true
+    },
+       {
+        "type": "text",
+        "id": "heading_text_1",
+        "label": "Heading",
+        "default": "Our collections"
+       },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "YouTube or Vimeo link",
+      "accept": ["youtube", "vimeo"]
+    },
+       {
+        "type": "text",
+        "id": "heading_text_2",
+        "label": "Heading",
+        "default": "Our collections"
+       },
+    {
+      "type": "video_url",
+      "id": "video_url_1",
+      "label": "YouTube or Vimeo link",
+      "accept": ["youtube", "vimeo"]
+    },
+       {
+        "type": "text",
+        "id": "heading_text_3",
+        "label": "Heading",
+        "default": "Our collections"
+       },
+    {
+      "type": "video_url",
+      "id": "video_url_2",
+      "label": "YouTube or Vimeo link",
+      "accept": ["youtube", "vimeo"]
+    }
+    ,
+    {
+    "type": "richtext",
+    "id": "text",
+    "label": "Text",
+    "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+    }
+   ],
+   "presets":[
+      {
+         "name":"About Video",
+         "category":"Video"
+      }
+   ]
+}
+{% endschema %}

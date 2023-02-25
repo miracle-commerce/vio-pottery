@@ -1,0 +1,26 @@
+<a id="inline" href="#cart_popup" class="fancybox cart-popper hide"></a>
+<div style="display:none">
+  <div id="cart_popup" class="row">
+    <h3>{{ 'cart.general.title' | t }}</h3>
+
+    {% include 'shopping-cart' %}
+
+    <div class="desktop-12 tablet-6 quick-cart-total">
+      {{ 'cart.general.subtotal' | t }}: <span class="cart_total">{{ cart.total_price | money }}</span>
+    </div>
+
+    {% if cart.item_count != 0 %}
+    <div class="desktop-6 tablet-3">
+      <a class="checkout-link" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue' | t }}</a>
+    </div>
+    <div class="desktop-6 tablet-3">
+      <a class="checkout-link" href="{{ routes.cart_url }}">{{ 'cart.general.checkout' | t }}</a>
+    </div>
+    {% endif %}
+    {% if cart.item_count == 0 %}
+    <p class="empty-cart">
+      {{ 'cart.general.empty' | t }}
+    </p>
+    {% endif %}
+  </div>
+</div>

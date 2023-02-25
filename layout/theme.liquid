@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Add any tracking or verification meta content below this line -->
+  <!-- Facebook or Google Analytics tracking should be placed in your Online store > Preferences and not your theme -->
+
+  <!-- Meta content
+================================================== -->
+
+  <title>
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}" />
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}" />
+  {% include 'social-media-meta-tags' %}
+
+  <!-- CSS
+================================================== -->
+
+  {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
+  {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
+  {{ 'queries.css' | asset_url | stylesheet_tag }}
+
+  <!-- Typography
+================================================== -->
+
+  {% include 'google-fonts' %}
+
+  <!-- JS
+================================================== -->
+
+  {{'//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js' | script_tag }}
+  {{ 'eventemitter3.min.js' | asset_url | script_tag }}
+
+  {{ 'theme.js' | asset_url | script_tag }}
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ 'jquery.fs.shifter.js' | asset_url | script_tag }}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Favicons
+================================================== -->
+
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}">
+
+  {% if template contains 'customers' %}
+  {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+  {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  {{ content_for_header }}
+
+</head>
+
+<body class="gridlock shifter {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template }}{% endif %}">
+  {% include 'timber-cart' %}
+  {% section 'mobile-navigation' %}
+  <div class="shifter-page{% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
+    <div class="page-wrap">
+      {% section 'header' %}
+      <div class="clear"></div>
+      {% if template contains 'collection' %}
+        {% if collection.description contains '[banner]' %}
+          {% capture banner %}{{ collection.handle }}.jpg{% endcapture %}
+          <div class="collection-banner">
+            {% include 'collection-banner-image' %}
+          </div>
+        {% endif %}
+      {% endif %}
+
+
+      {% if template == 'index' or template contains 'blog' or template contains 'list-collections' %}
+      {{ content_for_layout }}
+      {% else %}
+      <div id="content" class="row">
+        {% if template != 'index' %}
+          {% if settings.breadcrumb %}
+            {% include 'breadcrumb' %}
+          {% endif %}
+        {% endif %}
+        {{ content_for_layout }}
+      </div>
+      {% endif %}
+    </div>  <!-- close the page-wrap class -->
+    {% section 'footer' %}
+  </div> <!-- close the shifter-page class -->
+
+
+  {% include 'popup' %}
+
+  <a href="#" class="scrollup"><i class="icon-chevron-up icon-2x"></i></a>
+  <div class="fancybox-wrapper"></div>
+
+
+  {{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+
+  {% if settings.show-facebook-like %}
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=127142210767229";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  {% endif %}
+
+  {% if settings.ajax_cart_method == 'drawer' %}
+    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {% include 'ajax-cart-template' %}
+    {{ 'ajax-cart.js' | asset_url | script_tag }}
+    <script>
+      jQuery(function($) {
+        ajaxCart.init({
+          formSelector: '.product_form',
+          cartContainer: '#CartContainer',
+          addToCartSelector: '.AddtoCart',
+          cartCountSelector: '.CartCount',
+          cartCostSelector: '.CartCost',
+          moneyFormat: {{ shop.money_format | json }}
+       });
+      });
+      jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+        // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
+        timber.RightDrawer.open();
+      });
+    </script>
+  {% endif %}
+
+  <!-- Responsive Images -->
+  {{ 'ls.rias.min.js' | asset_url | script_tag }}
+  {{ 'ls.bgset.min.js' | asset_url | script_tag }}
+  {{ 'lazysizes.min.js' | asset_url | script_tag }}
+
+  <script>
+      document.documentElement.className =
+         document.documentElement.className.replace("no-js","js");
+  </script>
+  <!-- Fancybox JS -->
+  {{ 'jquery.fancybox.js' | asset_url | script_tag }}
+  <!-- Add any additional scripts below this line -->
+ <script>
+   
+    $(function(){
+    	 $(document).on('change', 'input[name="inptchkcarnotes"]', function() {
+    	if(this.checked) {
+      		// checkbox is checked
+          //alert('hi');
+    		$(".cartnotes").addClass("active");
+        }else{
+         // unchecked
+            $(".cartnotes").removeClass("active");
+        }
+});
+    })
+  </script>
+<style>
+  .cartnotes.active{
+  	display:block !important;
+  }
+  label[for="inptchkcarnotes"] {
+    text-align: left;
+    line-height: 14px;
+    margin-bottom: 15px;
+}
+  label[for="note"] {
+    text-align: left;
+}
+  input[name="inptchkcarnotes"] {
+    width: auto !important;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 0;
+    min-width: auto !important;
+    min-height: 15px;
+}
+  </style>
+</body>
+</html>

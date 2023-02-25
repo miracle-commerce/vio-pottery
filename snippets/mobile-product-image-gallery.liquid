@@ -1,0 +1,14 @@
+{% for image in product.images %}
+  {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+  <div class="mthumb" data-image-id="{{ image.id }}">
+    <img id="{{ product.id }}" class="product__image lazyload lazyload-fade"
+      data-src="{{ img_url }}"
+      data-sizes="auto"
+      alt="{{ image.alt | escape }}">
+
+    <noscript>
+      <img src="{{ image | img_url: '800x' }}" alt="{{ image.alt | escape }}">
+    </noscript>
+  </div>
+{% endfor %}

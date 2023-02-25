@@ -1,0 +1,93 @@
+<div data-section-id="{{ section.id }}" class="blog-template">
+
+  {% if section.settings.image != blank %}
+    <div class="collection-banner">
+      {%- include 'basic-responsive-image', type: section.settings.image -%}
+      <noscript>
+        <img src="{{ section.settings.image | img_url: '1024x' }}" alt="{{ section.settings.image.alt }}">
+      </noscript>
+    </div>
+  {% endif %}
+
+  <div id="content" class="row">
+    {% if settings.breadcrumb %}
+    {% include 'breadcrumb' %}
+    {% endif %}
+
+    <h1 class="desktop-12 mobile-3">{% if current_tags %}{{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}{% else %}{{ blog.title }}{% endif %}</h1>
+    {% paginate blog.articles by 50 %}
+
+    {% if section.settings.text != blank %}
+    <div class="desktop-12 tablet-6 mobile-3">
+    {{ section.settings.text }}
+    </div>
+    {% endif %}
+
+    <div id="article-loop" class="desktop-9 tablet-6 mobile-3">
+      {% for article in blog.articles  %}
+      {% assign number_of_comments = article.comments_count %}
+      {% if comment and comment.created_at %}
+      {% assign number_of_comments = article.comments_count | plus: 1 %}
+      {% endif %}
+      <div class="article-index" id="article-{{ article.id }}" data-alpha="{{ article.title }}">
+        {% include 'article-loop' %}
+      </div>
+      {% endfor %}
+    </div>
+    <div id="blog-sidebar" class="desktop-3 tablet-hide mobile-3">
+      <h2>{{ 'blogs.sidebar.title' | t }}</h2>
+
+      <ul id="posts">
+        {% for article in blog.articles limit: 5  %}
+        <li><a href="{{ article.url }}"><h4>{{ article.title }}</h4></a>
+         {% if section.settings.show_date %}<p>{{ article.published_at | date: "%b %d %Y" }}</p>{% endif %}
+          <p>{{ article.content | strip_html | truncate: 140 }}</p>
+        </li>
+        {% endfor %}
+        {% if blog.tags > 0 %}
+        <h3 style="margin: 20px 0">{{ 'blogs.sidebar.categories' | t }}</h3>
+        {% for tag in blog.all_tags %}
+        <li class="tags">
+          <a href="{{ routes.root_url }}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+        </li>
+        {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+
+
+    <div class="clear"></div>
+
+    {% include 'pagination' %}
+
+    {% endpaginate %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+"name": "Blog",
+"settings":
+  [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "id": "text",
+      "type": "richtext",
+      "label": "Text",
+      "default": "<p>Add some descriptive text to your Blog page.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show published date",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,125 @@
+<div class="homepage-section tabbed-collections no-fouc index-section featured-collections" data-section-id="{{ section.id }}" data-section-type="featured-collections">
+  <div class="row">
+    {% if section.settings.heading != blank %}
+    <h2 class="section-heading desktop-12 tablet-6 mobile-3"><a href="{{ collection.url }}">{{ section.settings.heading | escape }}</a></h2>
+    {% endif %}
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% else %}
+    <div class="desktop-12 tablet-6 mobile-3">
+      {% if section.blocks.size > 1 %}
+      <ul class="collection-tabs" id="tabbed-collections-{{ section.id }}">
+        {% for block in section.blocks %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        {% if collection != blank %}
+        <li{{ block.shopify_attributes }} data-tab-index="{{ forloop.index0 }}"><a href="#{{ block.id }}-tab-{{ forloop.index }}">{{ collection.title }}</a></li>
+        {% else %}
+        <li{{ block.shopify_attributes }} data-tab-index="{{ forloop.index0 }}"><a href="#{{ block.id }}-tab-{{ forloop.index }}">collection {{ forloop.index }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+    {% for block in section.blocks %}
+    {%- assign collection = collections[block.settings.collection] -%}
+    {% if collection != blank %}
+    <div id="{{ block.id }}-tab-{{ forloop.index }}"{{ block.shopify_attributes }}>
+        <div class="product-collection-carousel">
+          {% if collection.image %}
+          <div class="product-index" data-alpha="{{ collection.title }}">
+            <a href="{{ collection.url }}">
+              {{ collection.image.src | collection_img_url: '600x' | img_tag: collection_title }}
+            </a>
+          </div>
+          {% endif %}
+
+          {%- assign col_limit = section.settings.homepage_collection_limit -%}
+          {% for product in collection.products limit: col_limit %}
+          <div class="product-car">
+            <div id="product-listing-{{ product.id }}" class="product-index" data-alpha="{{ product.title }}" data-price="{{ product.price }}" data-product-id="{{ product.id }}">
+              {% include 'product-listing' with collection %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    {% include 'onboard-collection' %}
+    {% endif %}
+    {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+#product-listing-{{ product.id }} > a {
+  display: inline-block;
+  width: 100%;
+  padding: {{ settings.focus_border_weight }}px;
+}
+{% if section.settings.heading == blank %}
+  .product-collection-carousel .owl-controls.clickable { top: 0;}
+{% endif %}
+{% if section.blocks.size == 1 and section.settings.heading == blank %}
+  .product-collection-carousel .owl-controls.clickable { top: 50%; width: 100.7%}
+  .product-collection-carousel .owl-controls.clickable .owl-buttons { width: 100%; }
+  .product-collection-carousel .owl-controls.clickable .owl-prev { float: left; }
+  .product-collection-carousel .owl-controls.clickable .owl-next { float: right; }
+{% endif %}
+{% if section.blocks.size == 1 and section.settings.heading != blank %}
+  .product-collection-carousel .owl-controls.clickable { top: 0; }
+{% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "Tabbed collections",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tabbed collections"
+    },
+      {
+        "type": "range",
+        "id": "homepage_collection_limit",
+        "min": 6,
+        "max": 20,
+        "step": 1,
+        "label": "Products shown",
+        "default": 6
+      }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabbed collections",
+      "category": "Collection",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

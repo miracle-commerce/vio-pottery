@@ -1,0 +1,54 @@
+
+{% if settings.popup %}
+<script type="text/javascript">
+  if($(window).width() > 500){
+    // Fancybox Join our mailing list popup
+    $(document).ready(function(){
+
+      var check_cookie = $.cookie('mailing_list_delay_popup');
+      if(check_cookie == null){
+        $.cookie('mailing_list_delay_popup', 'expires_seven_days', { expires: 7 });
+        //fire your fancybox here
+        setTimeout(function(){
+          $.fancybox.open({
+           src  : '#mailing-popup',
+           type : 'inline',
+           baseClass: "subscribe-popup"
+          });
+        }, 4000);
+      }
+    });
+  };
+
+</script>
+
+
+<div class="mailing-popup" style="display:none">
+  <div id="mailing-popup">
+    <div id="subscribe_popup">
+      {% if settings.email_image != blank %}
+      {%- assign image_size = '600x' -%}
+      <p><img src="{{ settings.email_image | img_url: image_size }}"></p>
+      {% endif %}
+      <h3>{{ settings.email_popup_title }}</h3>
+      <p>{{ settings.email_popup_text }}</p>    <!-- BEGIN #subs-container -->
+      <div id="subs-container" class="clearfix">
+        <div id="mc_embed_signup">
+          {% form 'customer' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+          <p class="success">{{ 'password.general.thanks' | t }}</p>
+          {% else %}
+          <input type="hidden" name="contact[tags]" value="prospect, password page">
+          <input type="email" name="contact[email]" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}">
+          <input type="submit" id="mc-embedded-subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+          {% endif %}
+          {% endform %}
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="fb-like" data-href="{{ routes.root_url }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+    </div>
+  </div>
+</div>
+{% endif %}

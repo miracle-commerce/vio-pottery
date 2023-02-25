@@ -1,0 +1,12 @@
+<div class="product-loop">
+  {% if collection != blank %}
+  {% for product in collection.products limit: prod_limit %}
+  {% assign products-per-row = section.settings.products_per_row %}
+  <div id="product-listing-{{ product.id }}" class="item product-index {% if products-per-row == 6 %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == 4 %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == 3 %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == 5 %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == 2 %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half" data-alpha="{{ product.title }}" data-price="{{ product.price }}" data-product-id="{{ product.id }}">
+    {% include 'product-listing' %}
+  </div>
+  {% endfor %}
+  {% else %}
+  {% include 'onboard-product' %}
+  {% endif %}
+</div>

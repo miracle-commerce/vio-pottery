@@ -1,0 +1,433 @@
+{%- assign locale_selector = false -%}
+{%- assign currency_selector = false -%}
+
+{%- if section.settings.show_currency_selector and shop.enabled_currencies.size > 1 -%}
+  {%- assign currency_selector = true -%}
+{%- endif -%}
+
+{%- if section.settings.show_locale_selector and shop.published_locales.size > 1 -%}
+  {%- assign locale_selector = true -%}
+{%- endif -%}
+
+<div class="footer-section" data-section-id="{{ section.id }}" data-section-type="footer-section">
+<footer id="footer">
+  <div class="row">
+    {% case section.blocks.size %}
+    {% when 0 %}
+    {% when 1 %}
+    {% assign column_width = 'desktop-12 tablet-6 mobile-3' %}
+    {% when 2 %}
+    {% assign column_width = 'desktop-6 tablet-3 mobile-3' %}
+    {% when 3 %}
+    {% assign column_width = 'desktop-4 tablet-3 mobile-3' %}
+    {% when 4 %}
+    {% assign column_width = 'desktop-3 tablet-3 mobile-3' %}
+    {% endcase %}
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'menu' %}
+    <div class="{{ column_width }} footer-sect">
+      <div class="section-title">
+        <h4>{{ block.settings.heading | escape }}</h4>
+      </div>
+      <ul {{ block.shopify_attributes }}>
+        {% for link in linklists[block.settings.footer_nav].links %}
+        <li>{{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% when 'blog' %}
+    <div class="{{ column_width }} footer-sect">
+      <div class="section-title">
+        <h4>{{ block.settings.heading | escape }}</h4>
+      </div>
+      <ul>
+        {% for article in blogs[block.settings.footer_blog].articles limit: block.settings.post_limit %}
+        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% when 'text' %}
+    <div class="{{ column_width }} footer-sect">
+      <div class="section-title">
+        <h4>{{ block.settings.heading | escape }}</h4>
+      </div>
+      {{ block.settings.footer_text }}
+    </div>
+    {% endcase %}
+    {% endfor %}
+  </div>
+  <div class="clear"></div>
+  <div id="bottom-footer" class="sub-footer row">
+    <div class="footer-left">
+      <ul id="social-links">
+        {% for link in linklists["footer-menu"].links %}
+        <li>{{ link.title | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+      {% if section.settings.show_social_icons %}
+        <ul id="social-links">
+            {% include 'social-icons' %}
+        </ul>
+      {% endif %}
+      {% if section.settings.show_copyright %}
+        <p><a href="{{ routes.root_url }}">&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}</a> • {{ powered_by_link }}</p>
+      {% endif %}
+    </div>
+    <div id="payment" class="footer-right">
+      {% if locale_selector or currency_selector %}
+        <div class="disclosures">
+          {%- form 'localization', class: 'selectors-form' -%}
+            {%- if locale_selector -%}
+              <div class="selectors-form__item">
+                <h2 class="visually-hidden" id="lang-heading">
+                  {{ 'general.language.dropdown_label' | t }}
+                </h2>
+
+                <div class="disclosure" data-disclosure-locale>
+                  <button type="button" class="disclosure__toggle" aria-expanded="false" aria-controls="lang-list" aria-describedby="lang-heading" data-disclosure-toggle>
+                    {{ form.current_locale.endonym_name }}
+                  </button>
+                  <ul id="lang-list" class="disclosure-list" data-disclosure-list>
+                    {% for locale in form.available_locales %}
+                      <li class="disclosure-list__item {% if locale.iso_code == form.current_locale.iso_code %}disclosure-list__item--current{% endif %}">
+                        <a class="disclosure-list__option" href="#" lang="{{ locale.iso_code }}" {% if locale.iso_code == form.current_locale.iso_code %}aria-current="true"{% endif %} data-value="{{ locale.iso_code }}" data-disclosure-option>
+                          {{ locale.endonym_name }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  <input type="hidden" name="locale_code" id="LocaleSelector" value="{{ form.current_locale.iso_code }}" data-disclosure-input/>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if currency_selector -%}
+              <div class="selectors-form__item">
+                <h2 class="visually-hidden" id="currency-heading">
+                  {{ 'general.currency.dropdown_label' | t }}
+                </h2>
+
+                <div class="disclosure" data-disclosure-currency>
+                  <button type="button" class="disclosure__toggle" aria-expanded="false" aria-controls="currency-list" aria-describedby="currency-heading" data-disclosure-toggle>
+                    {{ form.current_currency.iso_code }} {%- if form.current_currency.symbol -%}{{ form.current_currency.symbol }}{%- endif -%}
+                  </button>
+                  <ul id="currency-list" class="disclosure-list" data-disclosure-list>
+                    {% for currency in form.available_currencies %}
+                      <li class="disclosure-list__item {% if currency.iso_code == form.current_currency.iso_code %}disclosure-list__item--current{% endif %}">
+                        <a class="disclosure-list__option" href="#" {% if currency.iso_code == form.current_currency.iso_code %}aria-current="true"{% endif %} data-value="{{ currency.iso_code }}" data-disclosure-option>
+                          {{ currency.iso_code }} {%- if currency.symbol -%}{{ currency.symbol }}{%- endif -%}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  <input type="hidden" name="currency_code" id="CurrencySelector" value="{{ form.current_currency.iso_code }}" data-disclosure-input/>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      {% endif %}
+      {% if section.settings.show_credit_cards %}
+        <div class="payment-methods">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag: class:'payment-icon' }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+<style>
+{% if section.settings.payment_icon_color %}
+   svg.payment-icon { filter: grayscale(1); }
+  {% endif %}
+
+  #footer .footer-sect {
+    text-align: {{ section.settings.footer_text_align }};
+    {% if section.settings.footer_text_align == 'center' %}
+    margin-left: auto;
+    margin-right: auto;
+    {% endif %}
+  }
+
+  #footer h4 {
+    font-size: {{ section.settings.footer_title_size }}px;
+    text-transform: {{ section.settings.footer_title_transform }};
+    font-weight: 600;
+    line-height: calc(({{ section.settings.footer_title_size }}px * 0.17) + {{ section.settings.footer_title_size }}px);
+  }
+
+  div#bottom-footer {
+    display: flex;
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid {{ settings.footer_border }};
+    margin-top: 64px;
+    align-items: flex-end;
+  }
+
+  div#bottom-footer .footer-left {
+    width: 50%;
+    text-align: left;
+  }
+
+  div#bottom-footer .footer-right {
+    width: 50%;
+    text-align: right;
+  }
+
+  div#bottom-footer #copy p {
+    text-align: left;
+    margin: 0;
+  }
+  div#bottom-footer #payment {
+    text-align: right;
+  }
+  div#bottom-footer #payment .payment-methods {
+    margin-top: 10px;
+  }
+  div#bottom-footer .selectors-form {
+    justify-content: flex-end;
+    margin: 0;
+  }
+  div#bottom-footer ul#social-links {
+    float: none;
+    text-align: left;
+  }
+
+  @media (min-width: 980px) {
+    #footer #payment {
+      text-align: {{ section.settings.footer_text_align }};
+    }
+    #footer ul#footer-icons {
+      text-align: {{ section.settings.footer_text_align }};
+    }
+    {% if section.settings.footer_text_align == 'left' %}
+      #footer ul#footer-icons li:first-child {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #footer .selectors-form {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+      }
+    {% endif %}
+  }
+  @media (max-width: 740px) {
+    div#bottom-footer {
+      flex-wrap: wrap;
+    }
+    div#bottom-footer .footer-left {
+      width: 100%;
+      text-align: left;
+      order:2;
+      margin-top: 31px;
+    }
+    div#bottom-footer .footer-right {
+      width: 100%;
+      text-align: left;
+      order: 1;
+    }
+    div#bottom-footer .selectors-form {
+      justify-content: flex-start;
+      margin: 0;
+    }
+    div#bottom-footer #payment {
+      text-align: left;
+    }
+    div#bottom-footer .payment-methods {
+      margin-top: 10px;
+    }
+    div#bottom-footer  .footer-section .disclosure__toggle {
+      height: 44px;
+      width: 80px;
+    }
+    div#bottom-footer ul#social-links {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+</style>
+</footer>
+
+</div>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 4,
+  "settings": [
+  {
+      "type": "select",
+      "id": "footer_text_align",
+      "label": "Footer text align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "footer_title_transform",
+      "label": "Footer title case",
+      "options": [
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "inherit",
+          "label": "Regular"
+        }
+      ]
+    },
+    {
+      "type":      "range",
+      "id":        "footer_title_size",
+      "min":       12,
+      "max":        36,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Footer title size",
+      "default":   14
+    },
+    {
+      "type": "checkbox",
+      "id": "show_credit_cards",
+      "label": "Show payment icons",
+      "default": true,
+      "info": "The icons that show are determined by your store's payment settings."
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_icon_color",
+      "label": "Grayscale payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show social icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "Show site name and copyright",
+      "default": true
+    },
+   {
+      "type": "header",
+      "content": "Language Selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+     "type": "checkbox",
+     "id": "show_locale_selector",
+     "label": "Show language selector",
+     "default": true
+    },
+    {
+      "type": "header",
+      "content": "Currency Selector",
+      "info": "To add a currency, go to your [payment settings.](/admin/settings/payments)"
+    },
+    {
+     "type": "checkbox",
+     "id": "show_currency_selector",
+     "label": "Show currency selector",
+     "default": true
+    }
+  ],
+  "blocks":[
+    {
+      "type":"menu",
+      "name":"Menu",
+      "settings":[
+        {
+          "type": "link_list",
+          "id": "footer_nav",
+          "label": "Choose a menu",
+          "info":"This menu won't show dropdown items"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Menu title",
+          "default": "Explore"
+        }
+      ]
+    },
+    {
+      "type":"blog",
+      "name":"Blog",
+      "limit": 1,
+      "settings":[
+        {
+          "id": "footer_blog",
+          "type": "blog",
+          "label": "Blog"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Blog title",
+          "default": "Recent posts"
+        },
+        {
+          "type": "select",
+          "id": "post_limit",
+          "label": "Posts",
+          "default": "3",
+          "options": [
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "6",
+              "label": "6"
+            },
+            {
+              "value": "9",
+              "label": "9"
+            },
+            {
+              "value": "12",
+              "label": "12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings":[
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Text title",
+          "default": "About"
+        },
+      {
+          "id": "footer_text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Add some text to your footer.</p>"
+       }
+      ]
+    }
+  ]
+}
+{% endschema %}

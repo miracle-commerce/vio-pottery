@@ -1,0 +1,151 @@
+<div data-section-id="{{ section.id }}" class="collection-template" data-section-type="collection-page">
+
+  {% case section.settings.grid %}
+  {% when 2 %}
+  {%- assign grid_item_width = 'desktop-6 tablet-3 mobile-half' -%}
+  {% when 3 %}
+  {%- assign grid_item_width = 'desktop-4 tablet-2 mobile-half' -%}
+  {% when 4 %}
+  {%- assign grid_item_width = 'desktop-3 tablet-2 mobile-half' -%}
+  {% endcase %}
+
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+  {% paginate collection.products by product_limit %}
+
+<div id="collection-description" class="desktop-12 mobile-3">
+  <h1>{{ collection.title }}</h1>
+  <div class="rte">
+    {{ collection.description | remove: "[banner]" }}
+  </div>
+</div>
+
+<div class="clear"></div>
+
+
+<div id="full-width-filter" class="desktop-12 tablet-6 mobile-3">
+  {% include 'filter',ptags:section.settings.sort_a %}
+</div>
+
+
+{% if section.blocks.size > 0 %}
+  {% include 'collection-sidebar' %}
+{% endif %}
+
+<div id="product-loop" {% if section.blocks.size > 0 %}class="desktop-10 tablet-5 mobile-3"{% endif %}>
+  {% assign products-per-row = section.settings.products_per_row %}
+
+  {% for product in collection.products %}
+  <div  id="product-listing-{{ product.id }}" class="item product-index {{ grid_item_width }}" data-alpha="{{ product.title }}" data-product-id="{{ product.id }}" data-price="{{ product.price }}">
+    {% include 'product-listing' %}
+  </div>
+  {% endfor %}
+</div>
+
+{% include 'pagination' %}
+{% endpaginate %}
+</div>
+
+{% schema %}
+  {
+    "name": "Collection page",
+    "max_blocks":4,
+    "settings": [
+      {
+        "type": "range",
+        "id": "grid",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "label": "Rows",
+        "default": 4
+      },
+      {
+        "type": "checkbox",
+        "id": "sort_by",
+        "label": "Show sort by",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "Your customers can filter collections using tags that you have added to your products. [See our setup instructions for these filters](http:\/\/support.undergroundmedia.co.uk\/customer\/en\/portal\/articles\/1348811-filter-collections-with-tags)."
+      },
+      {
+        "type": "text",
+        "id": "filter_1_title",
+        "label": "Filter 1 title",
+        "default": "Filter by X"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_a",
+        "label": "Filter 1 tags",
+        "info": "Comma separated"
+      },
+      {
+        "type": "text",
+        "id": "filter_2_title",
+        "label": "Filter 2 title",
+        "default": "Filter by Y"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_b",
+        "label": "Filter 2 tags",
+        "info": "Comma separated"
+      },
+      {
+        "type": "text",
+        "id": "filter_3_title",
+        "label": "Filter 3 title",
+        "default": "Filter by Z"
+      },
+      {
+        "type": "textarea",
+        "id": "sort_c",
+        "label": "Filter 3 tags",
+        "info": "Comma separated"
+      }
+    ],
+    "blocks":[
+    {
+      "type":"menu",
+      "name":"Menu",
+      "settings":[
+        {
+         "type": "link_list",
+         "id": "side_nav",
+         "label": "Sidebar menu"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Menu title",
+          "default": "Explore"
+        }
+      ]
+    },
+    {
+      "type":"vendor_list",
+      "name":"Vendor list",
+      "limit": 1,
+      "settings":[
+        {
+          "type": "text",
+          "id": "shop_by_designer_title",
+          "label": "Vendor list title",
+          "default": "Shop by Designer"
+        }
+      ]
+    }
+    ]
+  }
+{% endschema %}

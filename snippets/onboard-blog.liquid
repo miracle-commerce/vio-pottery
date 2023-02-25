@@ -1,0 +1,24 @@
+{% for i in (1..2) %}
+{% capture current %}{{ forloop.index }}{% endcapture %}
+{%- assign placeholder = 'lifestyle-' | append: current -%}
+<div class="article-index desktop-6 tablet-half mobile-3{% cycle ' first', ' last' %}" id="article-{{ article.id }}" data-alpha="{{ article.title }}">   
+  <div class="article-info"> 
+    <div class="article-info-inner">
+      <h3><a href="#">Blog post</a></h3>
+      <p class="posted">{{ 'now' | date: "%a, %b %d, %y" }}</p>
+      {%- assign image_size = '500x' -%}
+      <div class="article-image onboard">
+        <a href="#" title="{{ article_title }}">
+          {{ placeholder | placeholder_svg_tag }}
+        </a>     
+      </div>          
+      <div class="article-content">
+        {{ article.excerpt }}
+      </div>
+      <div class="readmore">
+        <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

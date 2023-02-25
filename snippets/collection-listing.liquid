@@ -1,0 +1,6 @@
+<div id="product-loop">
+  {% for collection in collections %}
+  {% assign products-per-row = settings.products_per_row %}
+  {% include 'collection-grid-item' %}
+  {% endfor %}
+</div>

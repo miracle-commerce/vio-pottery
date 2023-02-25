@@ -1,0 +1,255 @@
+<div id="newsletter" class="homepage-section newsletter-{{ section.id }}">
+  <div class="newsletter-wrapper">
+    {% unless section.settings.heading == blank %}
+      <h2 class="text-center">{{ section.settings.heading }}</h2>
+    {% endunless %}
+    {% unless section.settings.newsletter_subheading == blank %}
+      <span class="newsletter-subheading">
+        <p>{{ section.settings.newsletter_subheading }}</p>
+      </span>
+    {% endunless %}
+    <div class="row">
+      <label class="desktop-4 tablet-2 mobile-3">{{ 'general.newsletter_form.newsletter_title' | t }}</label>
+
+      <div id="signup" class="{% if section.settings.show_social_icons %}desktop-4{% else %}desktop-8{% endif %} tablet-2 mobile-3">
+        {% form 'customer' %}
+
+        {% if form.posted_successfully? %}
+        <p class="success">{{ 'password.general.thanks' | t }}</p>
+        {% else %}
+        <input type="hidden" name="contact[tags]" value="prospect, password page">
+        <input type="email" name="contact[email]" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}">
+        <input type="submit" id="mc-embedded-subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+        {% endif %}
+         {{ form.errors | default_errors }}
+        {% endform %}
+
+      </div>
+      {% if section.settings.show_social_icons %}
+        <ul id="social-icons" class="desktop-4 tablet-2 mobile-3">
+          {% include 'social-icons' %}
+        </ul>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+<style>
+  .homepage-section.newsletter-{{ section.id }} h2 {
+    color: {{ section.settings.heading_color }};
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 0;
+  }
+  .homepage-section.newsletter-{{ section.id }} span.newsletter-subheading p {
+    color: {{ section.settings.subheading_color }};
+    font-weight: {{ section.settings.subheading_font_weight }};
+    font-size: {{ section.settings.subheading_font_size }}px;
+    text-align: center;
+    line-height: 10px;
+  }
+  .newsletter-subheading a {
+    color: {{ section.settings.subheading_color }};
+    opacity: 0.9;
+  }
+  .homepage-section.newsletter-{{ section.id }} ul#social-icons li a {
+    color: {{ section.settings.social_icons_color }};
+  }
+  .homepage-section.newsletter-{{ section.id }} .newsletter-wrapper {
+    background: {{ section.settings.newsletter_background }};
+    margin: 20px 0 20px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  body.index #newsletter .newsletter-wrapper {
+    margin-top: 0;
+  }
+  .newsletter-wrapper #social-icons {
+    text-align: center;
+  }
+  .homepage-section.newsletter-{{ section.id }} label {
+    float: left;
+    color: {{ section.settings.newsletter_color }};
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+  .homepage-section.newsletter-{{ section.id }} h2 {
+    margin-bottom: 20px;
+  }
+  .homepage-section.newsletter-{{ section.id }} p.success {
+    color: {{ section.settings.newsletter_color }};
+    margin-bottom: 0;
+    margin-top: 15px;
+    line-height: initial;
+  }
+
+  #signup {
+    margin-top: 20px;
+  }
+
+  .homepage-section.newsletter-{{ section.id }} #mc-embedded-subscribe {
+    float: left;
+    width: 23%;
+    display: inline-block;
+    border-radius: 0;
+    border: 1px solid transparent;
+    font-size: 13px;
+    color: {{ section.settings.newsletter_button_color }};
+    background: {{ section.settings.newsletter_button }};
+    height: 44px;
+    margin-left: 2%;
+    transition: all .25s ease-in-out;
+    margin-bottom: 0;
+  }
+
+  .homepage-section.newsletter-{{ section.id }} #mc-embedded-subscribe:hover {
+    border: 1px solid {{ section.settings.newsletter_color }};
+    background: {{ section.settings.newsletter_button_hover }};
+  }
+
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL {
+    float: left;
+    display: inline-block;
+    width: 75%;
+    border-radius: 0;
+    border: 1px solid {{ section.settings.newsletter_color }};
+    background: transparent;
+    color: {{ section.settings.newsletter_color }};
+    margin-bottom: 0;
+    height: 44px;
+    line-height: 44px;
+  }
+
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL::-webkit-input-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL:-moz-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL:focus:-moz-placeholder {
+    color: transparent;
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL::-moz-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL:focus::-moz-placeholder {
+    color: transparent;
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL:-ms-input-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  .homepage-section.newsletter-{{ section.id }} #mce-EMAIL:focus:-ms-input-placeholder {
+    color: transparent;
+  }
+
+
+</style>
+{% schema %}
+{
+   "name":"Newsletter",
+   "settings":[
+    {
+     "type": "paragraph",
+     "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_subheading",
+      "label": "Subheading",
+      "default": "<p>Signup for our newsletter to stay up to date on sales and events.</p>"
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "subheading_font_weight",
+      "label": "Subheading weight",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_color",
+      "label": "Other text",
+      "default": "#fff"
+    }, {
+      "type": "color",
+      "id": "newsletter_background",
+      "label": "Background",
+      "default": "#000"
+    },
+      {
+      "type": "color",
+      "id": "newsletter_button_color",
+      "label": "Button text",
+      "default": "#fff"
+    }, {
+      "type": "color",
+      "id": "newsletter_button",
+      "label": "Button background",
+      "default": "#000"
+    }, {
+      "type": "color",
+      "id": "newsletter_button_hover",
+      "label": "Button background hover",
+      "default": "#000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show social icons",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "social_icons_color",
+      "label": "Social icons color",
+      "default": "#fff"
+    }
+   ],
+   "presets": [{
+      "name": "Newsletter",
+      "category": "Promotional"
+    }]
+}
+{% endschema %}

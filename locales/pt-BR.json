@@ -1,0 +1,314 @@
+{
+  "password": {
+    "general": {
+      "thanks": "Obrigado por participar da nossa lista",
+      "enter_store": "Entre na loja usando a senha:",
+      "password": "Senha",
+      "enter": "Entrar",
+      "email_address": "Endereço de e-mail",
+      "submit": "Enviar",
+      "powered": "Esta loja será desenvolvida por"
+    }
+  },
+  "general": {
+    "404": {
+      "title": "Opa! Não conseguimos encontrar esse produto",
+      "subtext": "Essa página não existe. Tente pesquisar o que você gostaria de encontrar:",
+      "contact": "Entre em contato conosco"
+    },
+    "pagination": {
+      "showing_items": "Mostrando itens",
+      "of": "de"
+    },
+    "forms": {
+      "post_error": "Desculpe, parece que alguns campos não foram preenchidos:"
+    },
+    "breadcrumbs": {
+      "home": "Início"
+    },
+    "newsletter_form": {
+      "newsletter_title": "Inscrever-se para receber atualizações por e-mail",
+      "newsletter_email": "Digite o endereço de e-mail",
+      "submit": "Participar"
+    },
+    "search": {
+      "no_results_html": "Sua pesquisa por \"{{ terms }}\" não produziu nenhum resultado.",
+      "results_for_html": "Sua pesquisa por \"{{ terms }}\" revelou os seguintes resultados:",
+      "title": "Pesquisar na nossa loja",
+      "placeholder": "Pesquisar",
+      "submit": "Pesquisar"
+    },
+    "social": {
+   	  "share": "Compartilhar"
+   	},
+    "currency": {
+      "dropdown_label": "Moeda"
+    },
+    "language": {
+      "dropdown_label": "Idioma"
+    }
+  },
+  "sections": {
+    "map": {
+      "get_directions": "Obter direções",
+      "address_error": "Erro ao pesquisar esse endereço",
+      "address_no_results": "Nenhum resultado para esse endereço",
+      "address_query_limit_html": "Você excedeu o limite de uso de APIs do Google. Avalie a possibilidade de atualizar para <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">um Plano Premium<\/a>.",
+      "auth_error_html": "Ocorreu um problema ao autenticar sua conta do Google Maps. Crie e ative o <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> e <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geocoding API<\/a> permissões do seu aplicativo."
+    }
+  },
+  "blogs": {
+    "article": {
+      "posted_on_date_html": "Postado em {{ date }}",
+      "tags": "Marcadores",
+      "tagged": "Marcado",
+      "comments": "comentários",
+      "read_more": "Ler mais",
+      "more_posts": "Mais postagens",
+      "older_post": "Postagem anterior",
+      "newer_post": "Próxima postagem"
+    },
+    "comments": {
+      "title": "Deixe um comentário",
+      "your_name": "Seu nome",
+      "your_email": "Seu e-mail",
+      "your_comment": "Sua mensagem",
+      "moderated": "Todos os comentários do blog são verificados antes da publicação",
+      "post": "Postar comentário",
+      "success_moderated": "Seu comentário foi postado com sucesso. Ele será publicado em breve, já que nosso blog é moderado.",
+      "success": "Seu comentário foi postado com sucesso! Obrigado!",
+      "comments_with_count": {
+        "one": "{{ count }} comentário",
+        "other": "{{ count }} comentários"
+      }
+    },
+    "sidebar": {
+      "title": "Postagens recentes",
+      "categories": "Categorias",
+      "social_title": "Conecte-se conosco",
+      "facebook_title": "Curta-nos no Facebook"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Meu carrinho",
+      "close_cart": "Fechar",
+      "empty": "Seu carrinho está vazio.",
+      "product": "Produto",
+      "price": "Preço",
+      "qty": "Quantidade",
+      "remove": "Remover",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "continue": "Continuar comprando",
+      "update": "Atualizar carrinho",
+      "checkout": "Finalizar compra",
+      "note": "Deixe instruções especiais abaixo:",
+      "recently_viewed": "Você também viu",
+      "discount_applied": "Desconto aplicado:",
+      "savings": "Total de descontos",
+      "discounts": "Descontos"
+    }
+  },
+  "collections": {
+    "general": {
+      "all_collections": "Coleções",
+      "no_matches": "Não há itens nessa coleção",
+      "items": "Item(ns)"
+    },
+    "sorting": {
+      "title": "Ordenar por",
+      "featured": "Em destaque",
+      "best_selling": "Mais vendido",
+      "az": "Alfabeticamente, A-Z",
+      "za": "Alfabeticamente, Z-A",
+      "price_ascending": "Preço, menor para maior",
+      "price_descending": "Preço, maior para menor",
+      "date_descending": "Data, mais recente para mais antiga",
+      "date_ascending": "Data, mais antiga para mais recente"
+    },
+    "filter": {
+      "all": "Todos"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Número de telefone",
+      "message": "Mensagem",
+      "send": "Enviar",
+      "post_success": "Obrigado por entrar em contato conosco. Retornaremos assim que possível."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Conta",
+      "details": "Detalhes da conta",
+      "view_addresses": "Ver endereços",
+      "return": "Voltar para os detalhes da conta"
+    },
+    "activate_account": {
+      "title": "Ativar conta",
+      "subtext": "Crie sua senha para ativar sua conta.",
+      "password": "Senha",
+      "password_confirm": "Confirmar senha",
+      "submit": "Ativar conta",
+      "cancel": "Recusar convite"
+    },
+    "addresses": {
+      "title": "Seus endereços",
+      "default": "Padrão",
+      "add_new": "Adicionar um novo endereço",
+      "edit_address": "Editar endereço",
+      "first_name": "Nome",
+      "last_name": "Sobrenome",
+      "company": "Empresa",
+      "address1": "Endereço 1",
+      "address2": "Endereço 2",
+      "city": "Cidade",
+      "country": "País",
+      "province": "Província",
+      "zip": "CEP/Código postal",
+      "phone": "Telefone",
+      "set_default": "Definir como endereço padrão",
+      "add": "Adicionar endereço",
+      "update": "Atualizar endereço",
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "delete": "Excluir"
+    },
+    "login": {
+      "title": "Entrar",
+      "email": "E-mail",
+      "password": "Senha",
+      "forgot_password": "Esqueceu a senha?",
+      "sign_in": "Entrar",
+      "cancel": "Voltar para a loja",
+      "guest_title": "Continuar como convidado",
+      "guest_continue": "Continuar"
+    },
+    "orders": {
+      "title": "Histórico de pedidos",
+      "order_number": "Pedido",
+      "date": "Data",
+      "payment_status": "Status do pagamento",
+      "fulfillment_status": "Status da entrega",
+      "total": "Total",
+      "none": "Você ainda não fez nenhum pedido."
+    },
+    "order": {
+      "title": "Pedido",
+      "date": "Solicitado em",
+      "cancelled": "Pedido cancelado em",
+      "cancelled_reason": "Motivo: {{ reason }}",
+      "billing_address": "Endereço de cobrança",
+      "payment_status": "Status do pagamento",
+      "shipping_address": "Endereço de entrega",
+      "fulfillment_status": "Status da entrega",
+      "discount": "Desconto",
+      "shipping": "Frete",
+      "tax": "Imposto",
+      "details": {
+        "product": "Produto",
+        "sku": "SKU",
+        "price": "Preço",
+        "quantity": "Quantidade",
+        "total": "Total",
+        "fulfilled_at": "Entregue {{ date }}",
+        "subtotal": "Subtotal"
+      }
+    },
+    "recover_password": {
+      "title": "Redefina sua senha",
+      "email": "Email",
+      "submit": "Enviar",
+      "cancel": "Cancelar",
+      "subtext": "Enviaremos um e-mail para você redefinir sua senha.",
+      "success": "Enviamos um e-mail com um link para você atualizar sua senha."
+    },
+    "reset_password": {
+      "title": "Redefinir senha da conta",
+      "subtext": "Digite uma nova senha para {{ email }}",
+      "password": "Senha",
+      "password_confirm": "Confirmar senha",
+      "submit": "Redefinir senha"
+    },
+    "register": {
+      "title": "Criar conta",
+      "first_name": "Nome",
+      "last_name": "Sobrenome",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Criar"
+    }
+  },
+  "layout": {
+    "cart": {
+      "my_cart": "MEU CARRINHO"
+    },
+    "customer": {
+      "my_account": "CONTA",
+      "log_out": "SAIR",
+      "log_in": "ENTRAR",
+      "create_account": "INSCREVER-SE"
+    },
+    "homepage": {
+      "onboarding": {
+        "no_content": "Essa seção atualmente não possui nenhum conteúdo. Adicione conteúdo a essa seção usando a barra lateral. "
+      }
+    }
+  },
+  "products": {
+    "general": {
+      "new": "NOVO",
+      "sale": "LIQUIDAÇÃO",
+      "sold": "ESGOTADO",
+      "quick_view": "VISUALIZAÇÃO RÁPIDA",
+      "from": "De",
+      "view_full": "Ver todos os detalhes",
+      "related": "Mais nessa coleção",
+      "sale_price": "Preço promocional",
+      "regular_price": "Preço normal"
+    },
+    "product": {
+      "sold_out": "Esgotado",
+      "unavailable": "Indisponível",
+      "compare_at": "Comparar em",
+      "add_to_cart": "Adicionar ao carrinho",
+      "pre_order": "Pré-encomenda",
+      "quantity": "Quantidade",
+      "sku": "SKU",
+      "back_to": "Voltar para",
+      "previous_product_html": "Produto anterior",
+      "next_product_html": "Próximo produto",
+      "adding": "Adicionando...",
+      "thank_you": "Obrigado!",
+      "added": "Adicionado ao carrinho",
+      "view_cart": "Ver carrinho",
+      "or": "ou",
+      "continue": "Continuar comprando",
+      "popup_question": "Faça uma pergunta para nós",
+      "add_to_cart_success_link": "Ver carrinho e finalizar a compra!",
+      "add_to_cart_success_html": "Item adicionado {{ link }}",
+      "view_in_space": "Ver no seu espaço",
+      "view_in_space_label": "Ver no seu espaço. Carrega o item com realidade aumentada janela"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Aqui está seu {{ value }} cartão-presente para {{ shop }}!",
+      "subtext": "Aqui está seu cartão-presente!",
+      "disabled": "Desativado",
+      "expired": "Vencido em {{ expiry }}",
+      "active": "Vence em {{ expiry }}",
+      "redeem": "Use esse código ao finalizar a compra para resgatar seu vale-presente",
+      "shop_link": "Comece a comprar",
+      "print": "Imprimir",
+      "email": "E-mail"
+    }
+  },
+  "date_formats": {
+    "month_date_year": "%B %d %Y"
+  }
+}

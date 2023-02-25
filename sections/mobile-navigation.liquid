@@ -1,0 +1,55 @@
+<nav class="shifter-navigation no-fouc" data-section-id="{{ section.id }}" data-section-type="mobile-navigation">
+  <div class="search">
+    <form action="/search" method="get">
+      <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+    </form>
+  </div>
+
+  <ul id="accordion">
+    {% assign menu = linklists[section.settings.main_nav] %}
+    {% for link in menu.links %}
+    {% if link.links != blank %}
+    <li class="accordion-toggle" aria-haspopup="true" aria-expanded="false"><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+    <div class="accordion-content">
+      <ul class="sub">
+        {% for sub_link in link.links %}
+        {% if sub_link.links != blank %}
+        <div class="accordion-toggle2" aria-haspopup="true" aria-expanded="false"><a href="{{ sub_link.url }}">{{ sub_link.title | escape }}</a></div>
+        <div class="accordion-content2">
+          <ul class="sub">
+            {% for sub_sub_link in sub_link.links %}
+            <li><a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% else %}
+        <li><a href="{{ sub_link.url }}">{{ sub_link.title | escape }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% else %}
+    <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+
+
+{% schema %}
+  {
+    "name": "Mobile navigation",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "main_nav",
+        "label": "Choose main menu",
+        "default":"main-menu"
+      }
+	]
+  }
+{% endschema %}

@@ -1,0 +1,84 @@
+<div data-section-id="{{ section.id }}" class="collection-list-template">
+
+  {% case section.settings.grid %}
+  {% when 2 %}
+  {%- assign grid_item_width = 'desktop-6 tablet-3 mobile-half' -%}
+  {% when 3 %}
+  {%- assign grid_item_width = 'desktop-4 tablet-2 mobile-half' -%}
+  {% when 4 %}
+  {%- assign grid_item_width = 'desktop-3 tablet-2 mobile-half' -%}
+  {% endcase %}
+
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+  {% paginate collections by product_limit %}
+
+  {% if section.settings.image != blank %}
+    <div class="collection-banner">
+      {% include 'basic-responsive-image', type: section.settings.image %}
+      <noscript>
+        <img src="{{ section.settings.image | img_url: '1024x' }}" alt="{{ section.settings.image.alt }}">
+      </noscript>
+    </div>
+  {% endif %}
+
+  <div id="content" class="row">
+    {% if settings.breadcrumb %}
+    {% include 'breadcrumb' %}
+    {% endif %}
+
+    <div id="collection-description" class="desktop-12 mobile-3">
+      <h1>{{ 'collections.general.all_collections' | t }}</h1>
+      {% if section.settings.text != blank %}
+      {{ section.settings.text }}
+      {% endif %}
+    </div>
+
+    <div id="product-loop">
+      {% for collection in collections %}
+      {% assign products-per-row = section.settings.products_per_row %}
+        {% include 'collection-grid-item' %}
+      {% endfor %}
+    </div>
+
+    {% include 'pagination' %}
+
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p>Add some descriptive text to your all collections page.</p>"
+       },
+      {
+        "type": "range",
+        "id": "grid",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "label": "Collections per row",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "label": "Rows",
+        "default": 4
+      }
+    ]
+  }
+{% endschema %}
