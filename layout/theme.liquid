@@ -77,16 +77,25 @@
 
 
         {% if template == 'index' or template contains 'blog' or template contains 'list-collections' %}
-        {{ content_for_layout }}
+          {%- if template == 'index' -%}
+            <div class="index-sections">
+          {%- endif -%}
+              {{ content_for_layout }}
+          {%- if template == 'index' -%}
+            </div>
+            <div class="load-wait">
+              <i class="fa fa-spinner fa-spin"></i>
+            </div>
+          {%- endif -%}
         {% else %}
-        <div id="content" class="row">
-          {% if template != 'index' %}
-            {% if settings.breadcrumb %}
-              {% include 'breadcrumb' %}
+          <div id="content" class="row">
+            {% if template != 'index' %}
+              {% if settings.breadcrumb %}
+                {% include 'breadcrumb' %}
+              {% endif %}
             {% endif %}
-          {% endif %}
-          {{ content_for_layout }}
-        </div>
+            {{ content_for_layout }}
+          </div>
         {% endif %}
       </div>  <!-- close the page-wrap class -->
       {% section 'footer' %}
