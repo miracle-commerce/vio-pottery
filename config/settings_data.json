@@ -2204,8 +2204,6 @@
           "show_currency_selector": true
         }
       },
-      
-      
       "blog-template": {
         "type": "blog-template",
         "settings": {
