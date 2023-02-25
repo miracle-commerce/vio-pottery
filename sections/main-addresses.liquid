@@ -176,3 +176,9 @@
   new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_province_{{address.id}}', {hideElement: 'address_province_container_{{address.id}}'});
                                       {% endfor %}
 </script>
+
+{% schema %}
+  {
+    "name": "Main addresses"
+  }
+{% endschema %}

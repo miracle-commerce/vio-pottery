@@ -1,0 +1,11 @@
+{
+  "name":"Default Login Template",
+  "sections":{
+    "main":{
+      "type":"main-login"
+    }
+  },
+  "order":[
+    "main"
+  ]
+}

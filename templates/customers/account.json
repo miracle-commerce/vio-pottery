@@ -1,0 +1,11 @@
+{
+  "name":"Default Account Template",
+  "sections":{
+    "main":{
+      "type":"main-account"
+    }
+  },
+  "order":[
+    "main"
+  ]
+}
