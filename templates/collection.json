@@ -1,0 +1,22 @@
+{
+  "name":"Default Product Template",
+  "sections":{
+    "main": {
+      "type": "collection-template",
+      "settings": {
+        "grid": 4,
+        "rows": 6,
+        "sort_by": true,
+        "filter_1_title": "Filter by Item Type",
+        "sort_a": "Pots,Jugs,Bowls,Garden Tools,Watering Cans,Accessories",
+        "filter_2_title": "Filter by Color",
+        "sort_b": "Duck Egg Blue, Light Grey, Chartwell Green, Old White, Moss Green, Blackberry, Wire, Dark Green, Ivory, Tiffany Blue, Berry Red",
+        "filter_3_title": "Filter by Z",
+        "sort_c": ""
+      }
+    }
+  },
+  "order":[
+    "main"
+  ]
+}

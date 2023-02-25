@@ -1,0 +1,11 @@
+{
+  "name":"KewColor Collection Template",
+  "sections":{
+    "main":{
+      "type":"kewcolor-template"
+    }
+  },
+  "order":[
+    "main"
+  ]
+}

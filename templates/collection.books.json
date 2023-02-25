@@ -1,0 +1,11 @@
+{
+  "name":"Books Collection Template",
+  "sections":{
+    "main":{
+      "type":"books-collection-template"
+    }
+  },
+  "order":[
+    "main"
+  ]
+}
