@@ -1,0 +1,11 @@
+{
+  "name":"Default Page Template",
+  "sections":{
+    "main":{
+      "type":"main-page"
+    }
+  },
+  "order":[
+    "main"
+  ]
+}

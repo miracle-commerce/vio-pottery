@@ -1,0 +1,25 @@
+{
+  "name":"About Page Template",
+  "sections":{
+    "main":{
+      "type":"main-page"
+    },
+    "about-video": {
+      "type": "aboutVideo",
+      "settings": {
+        "full_width": false,
+        "heading_text_1": "Top Ten Attractions at Kew Gardens:",
+        "video_url": "https:\/\/youtu.be\/7ngHhWAFzBc",
+        "heading_text_2": "The Story of Kew Gardens in Photographs:",
+        "video_url_1": "https:\/\/youtu.be\/BOBnqp5vsXw",
+        "heading_text_3": "Documentary about Kew Gardens:",
+        "video_url_2": "https:\/\/youtu.be\/I2tqN6FV6H0",
+        "text": "<p><a href=\"http:\/\/www.youtube.com\/user\/kewgardens\" target=\"_blank\">Official Royal Botanic Gardens, Kew Video Channel<\/a><\/p><p><a href=\"http:\/\/www.kew.org\/\" target=\"_blank\">Royal Botanic Gardens, Kew website<\/a><\/p><p><a href=\"http:\/\/en.wikipedia.org\/wiki\/Royal_Botanic_Gardens,_Kew\" target=\"_blank\">Wikipedia entry<\/a><\/p><p><a href=\"http:\/\/whc.unesco.org\/en\/list\/1084\" target=\"_blank\">UNESCO World Heritage site<\/a><\/p><p><a href=\"http:\/\/www.google.com\/intl\/en\/culturalinstitute\/worldwonders\/kew-gardens\/\" target=\"_blank\">World Wonders Project<\/a><\/p>"
+      }
+    }
+  },
+  "order":[
+    "main",
+    "about-video"
+  ]
+}
