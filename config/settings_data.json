@@ -2204,14 +2204,6 @@
           "show_currency_selector": true
         }
       },
-      "blog-template": {
-        "type": "blog-template",
-        "settings": {
-          "image": "",
-          "text": "<p>Add some descriptive text to your Blog page.<\/p>",
-          "show_date": true
-        }
-      },
       "mobile-navigation": {
         "type": "mobile-navigation",
         "settings": {

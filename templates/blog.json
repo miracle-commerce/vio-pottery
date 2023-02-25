@@ -1,0 +1,16 @@
+{
+  "name":"Main Blog Template",
+  "sections":{
+    "main": {
+      "type": "blog-template",
+      "settings": {
+        "image": "",
+        "text": "<p>Add some descriptive text to your Blog page.<\/p>",
+        "show_date": true
+      }
+    }
+  },
+  "order":[
+    "main"
+  ]
+}
