@@ -2209,26 +2209,7 @@
         "settings": {
           "main_nav": "main-menu"
         }
-      },
-      "password-template": {
-        "type": "password-template",
-        "settings": {
-          "newsletter_details": "<p>Coming Soon<\/p><p>Signup for our newsletter and get updated when we launch our site <a href=\"https:\/\/example.com\/\">see our newsletter policy.<\/a><\/p>",
-          "text_size": 18,
-          "text_color": "#000000",
-          "logo": "",
-          "logo_max_width": "500",
-          "background_color": "#f5f5f5",
-          "background_image": "",
-          "show_overlay_color": true,
-          "background_overlay_color": "#f5f5f5",
-          "overlay_color_opacity": 40,
-          "border_color": "#000000",
-          "button_color": "#000000",
-          "button_text_color": "#ffffff"
-        }
-      },
-      
+      },     
       "aboutVideo": {
         "type": "aboutVideo",
         "settings": {
