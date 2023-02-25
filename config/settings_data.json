@@ -2218,13 +2218,6 @@
           "main_nav": "main-menu"
         }
       },
-      "article-template": {
-        "type": "article-template",
-        "settings": {
-          "show_date": true,
-          "show_icons": true
-        }
-      },
       "search-template": {
         "type": "search-template",
         "settings": {

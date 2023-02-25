@@ -1,0 +1,15 @@
+{
+  "name":"Default Article Template",
+  "sections":{
+    "main": {
+      "type": "article-template",
+      "settings": {
+        "show_date": true,
+        "show_icons": true
+      }
+    }
+  },
+  "order":[
+    "main"
+  ]
+}
