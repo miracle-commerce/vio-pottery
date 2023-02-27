@@ -2,7 +2,7 @@
   "name":"Kew-Colors Page Template",
   "sections":{
     "main":{
-      "type":"kew-color-list"
+      "type":"main-page"
     },
     "kew-color-list": {
       "type": "kew-color-list",
