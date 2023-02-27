@@ -21,11 +21,13 @@
     <link rel="canonical" href="{{ canonical_url }}" />
     {% include 'social-media-meta-tags' %}
 
+    {% render 'critical-css-home' %}
+
     <!-- CSS
     ================================================== -->
 
-    {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
     {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
+    {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
     {{ 'queries.css' | asset_url | stylesheet_tag }}
 
     <!-- Typography

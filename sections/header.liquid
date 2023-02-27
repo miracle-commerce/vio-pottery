@@ -28,17 +28,24 @@
       </div>
     {%- endif -%}
 
-    <header{% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
+    <header {% if section.settings.full_width_header %} class="gridlock-fluid"{% endif %}>
       {% if section.settings.full_width_header %}<div class="row">{% endif %}
       <div id="identity" class="row">
         <div id="logo" class="{% if section.settings.logo_center %}desktop-4 desktop-push-4 tablet-6{% else %}desktop-8 tablet-3{% endif %} mobile-3">
           {% if section.settings.logo != blank %}
-          {%- assign image_size = '600x' -%}
-          <a href="{{ routes.root_url }}">
-            <img src="{{ section.settings.logo | img_url: image_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
-          </a>
+            
+            {%- if section.settings.logo_max_width <= section.settings.logo.width -%}
+              {%- assign image_width = section.settings.logo_max_width -%}
+            {%- else -%}
+              {%- assign image_width = section.settings.logo.width -%}
+            {%- endif -%}
+            {%- assign image_height = 1 | divided_by: section.settings.logo.aspect_ratio | times: image_width -%}
+
+            <a href="{{ routes.root_url }}">
+              <img src="{{ section.settings.logo | image_url: width: image_width }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo" width="{{image_width}}" height="{{image_height}}">
+            </a>
           {% else %}
-          <a href="{{ routes.root_url }}">{{ shop.name }}</a>
+            <a href="{{ routes.root_url }}">{{ shop.name }}</a>
           {% endif %}
         </div>
 
