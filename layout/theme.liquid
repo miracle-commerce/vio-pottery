@@ -20,7 +20,12 @@
     {% endif %}
     <link rel="canonical" href="{{ canonical_url }}" />
     {% include 'social-media-meta-tags' %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <!-- Favicons
+    ================================================== -->
+
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}">
 
     <!--------- Assign font picker families from theme settings --->
 
@@ -61,10 +66,12 @@
 
     <!-- CSS
     ================================================== -->
-
-    {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
-    {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
-    {{ 'queries.css' | asset_url | stylesheet_tag }}
+    <link rel="preload" href="{{ 'font-awesome.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ 'font-awesome.css' | asset_url }}"></noscript>
+    <link rel="preload" href="{{ 'stylesheet.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ 'stylesheet.css' | asset_url }}"></noscript>
+    <link rel="preload" href="{{ 'queries.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ 'queries.css' | asset_url }}"></noscript>
 
     <!-- Typography
     ================================================== -->
@@ -74,23 +81,15 @@
     <!-- JS
     ================================================== -->
 
-    {{'//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js' | script_tag }}
-    {{ 'eventemitter3.min.js' | asset_url | script_tag }}
-
-    {{ 'theme.js' | asset_url | script_tag }}
-    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
-    {{ 'jquery.fs.shifter.js' | asset_url | script_tag }}
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <!-- Favicons
-    ================================================== -->
-
-    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}">
-
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" async></script>
+    <script src="{{ 'eventemitter3.min.js' | asset_url }}" async></script>
+    <script src="{{ 'theme.js' | asset_url }}" async></script>
+    <script src="{{ 'option_selection.js' | shopify_asset_url }}" async></script>
+    <script src="{{ 'jquery.fs.shifter.js' | asset_url }}" async></script>
+    
     {% if template contains 'customers' %}
-    {{ "shopify_common.js" | shopify_asset_url | script_tag }}
-    {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" async></script>
+      <script src="{{ 'customer_area.js' | shopify_asset_url }}" async></script>
     {% endif %}
 
     {{ content_for_header }}
@@ -145,7 +144,7 @@
     <a href="#" class="scrollup"><i class="icon-chevron-up icon-2x"></i></a>
     <div class="fancybox-wrapper"></div>
 
-    {{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" type="text/javascript" async></script>
 
     {% if settings.show-facebook-like %}
       <div id="fb-root"></div>
@@ -183,15 +182,15 @@
     {% endif %}
 
     <!-- Responsive Images -->
-    {{ 'ls.rias.min.js' | asset_url | script_tag }}
-    {{ 'ls.bgset.min.js' | asset_url | script_tag }}
-    {{ 'lazysizes.min.js' | asset_url | script_tag }}
+    <script src="{{ 'lazysizes.min.js' | asset_url }}" async></script>
+    <script src="{{ 'ls.rias.min.js' | asset_url }}" async></script>
+    <script src="{{ 'ls.bgset.min.js' | asset_url }}" async></script>
 
     <script>
       document.documentElement.className = document.documentElement.className.replace("no-js","js");
     </script>
     <!-- Fancybox JS -->
-    {{ 'jquery.fancybox.js' | asset_url | script_tag }}
+    <script src="{{ 'jquery.fancybox.js' | asset_url }}" defer></script>
     <!-- Add any additional scripts below this line -->
     <script>   
       $(function(){
