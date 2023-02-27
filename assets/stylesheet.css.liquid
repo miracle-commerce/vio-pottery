@@ -962,31 +962,7 @@
   }
 }
 
-/* Assign font picker families from theme settings */
 
-{% assign main_font = settings.main_font %}
-{% assign heading_font = settings.heading_font %}
-{% assign nav_font = settings.nav_font %}
-
-{{ main_font | font_face }}
-{{ nav_font | font_face }}
-{{ heading_font | font_face }}
-
-{%- assign main_font_bold = main_font | font_modify: 'weight', 'bolder' -%}
-{%- assign main_font_italic = main_font | font_modify: 'style', 'italic' -%}
-{%- assign main_font_bold_italic = main_font_bold | font_modify: 'style', 'italic' -%}
-
-{% if main_font_bold %}
-  {{ main_font_bold | font_face }}
-{% endif %}
-
-{% if main_font_italic %}
-  {{ main_font_italic | font_face }}
-{% endif %}
-
-{% if main_font_bold_italic %}
-  {{ main_font_bold_italic | font_face }}
-{% endif %}
 
 html, body {
   height: 100%;
@@ -1013,8 +989,8 @@ body {
   color: {{ settings.text_color }};
   background: {{ settings.background }};
   font-size: {{ settings.font_size }}px;
-  font-family:{{ main_font.family }};
-  font-weight: {{ main_font.weight }};
+  font-family: var(--main-font-family);
+  font-weight: var(--main-font-weight)};
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
   margin: 0! important;
@@ -1058,8 +1034,8 @@ img[data-sizes="auto"] {
 
 h1, h2, h3, h4, h5, h6 {
   color: {{ settings.header_color }};
-  font-family:{{ heading_font.family }};
-  font-weight: {{ heading_font.weight }};
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
   margin-top: 0;
   line-height: normal;
 }
@@ -1091,7 +1067,7 @@ em {
 }
 
 pre {
-  font-family: {{ main_font.family }};
+  font-family: var(--main-font-family);
   font-size: 13px;
   font-weight: bold;
 }
@@ -1148,7 +1124,7 @@ ul {
 }
 
 blockquote {
-  font-family: {{ main_font.family }};
+  font-family: var(--main-font-family);
   font-size: 18px;
   line-height: 24px;
   font-style: italic;
@@ -1254,8 +1230,8 @@ input[type="button"] {
   background: {{ settings.button_color }};
   color: {{ settings.button_text }};
   font-size: {{ settings.font-size }}px;
-  font-weight: {{ main_font.weight }};
-  font-family: {{ main_font.family }};
+  font-weight: var(--main-font-weight)};
+  font-family: var(--main-font-family);
   border: 0;
   border-radius: 3px! important;
   transition: all .25s ease-in-out;
@@ -1316,7 +1292,7 @@ select {
   height: 40px;
   line-height: 40px;
   outline: none;
-  font: 13px {{ main_font.family }};
+  font: 13px var(--main-font-family);
   color: {{ settings.text_color }};
   margin: 0;
   width: 100%;
@@ -1570,7 +1546,7 @@ ul#social-links li.searchbox {
 #logo {
   line-height: initial;
   padding: 0;
-  font-family: {{ heading_font.family }};
+  font-family: var(--heading-font-family);
 }
 
 #logo a {
@@ -1581,7 +1557,7 @@ ul#social-links li.searchbox {
 
 nav {
   background: {{ settings.navigation }};
-  font-family: {{ nav_font.family }};
+  font-family: var(--nav-font-family);
   width: 100%;
   z-index: 5;
 }
@@ -1609,7 +1585,7 @@ ul#nav li:hover {
 
 ul#nav li a {
   font-size: {{ settings.nav_size }}px;
-  font-weight: {{ nav_font.weight }};
+  font-weight: var(--nav-font-weight);
   color: {{ settings.nav_color }};
   display: block;
   padding: 0 10px 0 10px;
@@ -1668,7 +1644,7 @@ ul#nav li ul.submenu li a:hover {
 ul#nav li ul.submenu li a {
   text-align: left;
   font-weight: normal;
-  font-family:{{ main_font.family }};
+  font-family:var(--main-font-family);
   font-size: {{ settings.dropdown_font_size }}px;
   padding-left: 15px;
   color: {{ settings.nav_dropdown_color }};
@@ -1773,7 +1749,7 @@ ul#nav li ul.megamenu li h4 a {
 
 ul.mega-stack li a {
   text-align: left;
-  font-family:{{ main_font.family }};
+  font-family:var(--main-font-family);
   font-weight: normal !important;
   font-size: {{ settings.dropdown_font_size }}px !important;
   padding-left: 0 !important;
@@ -2388,7 +2364,7 @@ ul.collection-tabs li:first-child a.active {
 }
 
 .parallax-text {
-  font-family: {{ main_font.family }};
+  font-family: var(--main-font-family);
   line-height: initial;
   position: relative;
   z-index: 2;
@@ -3051,7 +3027,7 @@ img.zoomImg {
   float: left;
   border: 1px solid #ddd;
   font-size: 13px;
-  font-family: {{ main_font.family }};
+  font-family: var(--main-font-family);
   padding-left: 8px;
   background: url({{ 'select-arrow.png' | asset_url }}) right no-repeat;
   -webkit-appearance: none;
@@ -3215,8 +3191,8 @@ ul#popups li.last {
     color: {{ settings.button_text }}! important;
     background: {{ settings.button_color }}! important;
     font-size: {{ settings.font-size }}px! important;
-    font-weight: {{ main_font.weight }}! important;
-    font-family: {{ main_font.family }}! important;
+    font-weight: var(--main-font-weight)}! important;
+    font-family: var(--main-font-family)! important;
 }
 
 .shopify-payment-button__button--unbranded:hover {
@@ -3688,7 +3664,7 @@ a.bx-next:after {
 
 .bx-wrapper .bx-caption span {
   color: #fff;
-  font-family: {{ main_font.family }};
+  font-family: var(--main-font-family);
   display: block;
   font-size: .85em;
   padding: 10px;
@@ -5060,6 +5036,7 @@ body.password form#login_form {
     url('flexslider-icon.svg#flexslider-icon') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 /* FlexSlider Necessary Styles
@@ -5334,7 +5311,7 @@ a.flex-prev {
   background: #f7f7f7;
   margin-top: 20px;
   margin-bottom: 50px;
-  font-weight: {{ main_font.weight }};
+  font-weight: var(--main-font-weight)};
 }
 
 .promo-inner .onboard .placeholder-svg, .ci.onboard .placeholder-svg, .plax-placehold {

@@ -21,7 +21,43 @@
     <link rel="canonical" href="{{ canonical_url }}" />
     {% include 'social-media-meta-tags' %}
 
-    {% render 'critical-css-home' %}
+
+    <!--------- Assign font picker families from theme settings --->
+
+    {% assign main_font = settings.main_font %}
+    {% assign heading_font = settings.heading_font %}
+    {% assign nav_font = settings.nav_font %}
+
+    
+    {%- assign main_font_bold = main_font | font_modify: 'weight', 'bolder' -%}
+    {%- assign main_font_italic = main_font | font_modify: 'style', 'italic' -%}
+    {%- assign main_font_bold_italic = main_font_bold | font_modify: 'style', 'italic' -%}
+    
+    {% style %}
+      {{ main_font | font_face : font_display: 'swap' }}
+      {{ nav_font | font_face : font_display: 'swap' }}
+      {{ heading_font | font_face : font_display: 'swap' }}
+      {% if main_font_bold %}
+        {{ main_font_bold | font_face : font_display: 'swap' }}
+      {% endif %}
+
+      {% if main_font_italic %}
+        {{ main_font_italic | font_face : font_display: 'swap' }}
+      {% endif %}
+
+      {% if main_font_bold_italic %}
+        {{ main_font_bold_italic | font_face : font_display: 'swap' }}
+      {% endif %}
+
+      :root{
+        --main-font-family: {{settings.main_font.family}}, {{settings.main_font.fallback_families}};
+        --main-font-weight: {{settings.main_font.weight}};
+        --heading-font: {{heading_font.family}}, {{heading_font.fallback_families}};
+        --heading-font-weight: {{heading_font.weight}};
+        --nav-font-family: {{nav_font.family}}, {{nav_font.fallback_families}}; 
+        --nav-font-weight: {{nav_font.weight}};
+      }
+    {% endstyle %}
 
     <!-- CSS
     ================================================== -->
