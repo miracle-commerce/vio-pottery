@@ -18,8 +18,8 @@
             data-image-id="{{ media.id }}" tabindex="0">
               <div class="product-single__thumbnail product-single__thumbnail--{{ section.id }}" data-thumbnail-id="product-template-{{ media.id }}">
                 <img class="lazyload lazyload-fade"
-                  src="{{ media | img_url: '150x' }}"
-                  data-src="{{ img_url }}"
+                  data-src="{{ media | img_url: '150x' }}"
+                  
                   data-sizes="auto"
                   data-image-id="{{ media.id }}"
                   alt="{{ media.alt | escape }}">
@@ -67,8 +67,7 @@
               {% when 'image' %}
                 {% assign img_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
                 <img id="{{ product.id }}" class="product__image lazyload lazyload-fade"
-                  src="{{ media | img_url: '800x' }}"
-                  data-src="{{ img_url }}"
+                  data-src="{{ media | img_url: '800x' }}"
                   data-sizes="auto"
                   data-zoom-src="{{ media | img_url: '2400x' }}"
                   data-aspectratio="{{ media.preview_image.aspect_ratio }}"
