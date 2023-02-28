@@ -1223,29 +1223,13 @@ theme.Testimonials = (function() {
 ==============================================================================*/
 theme.FeaturedProducts = (function() {
   function FeaturedProducts(container) {
-
-    var initHomepageCarousel = function(productCarousel) {
-      productCarousel.owlCarousel({
-        itemsCustom : [
-          [0, 2],
-          [450, 2],
-          [600, 2],
-          [700, 3],
-          [1000, 4],
-          [1200, 6],
-          [1400, 6],
-          [1600, 6]
-        ],
-        lazyLoad : true,
-        pagination : false,
-        navigation: true,
-        navigationText : false,
-        autoPlay : false,
-        stopOnHover : true
-      });
-    };
-
-    initHomepageCarousel($('.product-collection-carousel'));
+    
+    var productCarousel = $(container).find(".product-collection-carousel"); 
+    productCarousel.flickity({
+      cellAlign: 'left', 
+      contain: false, 
+      pageDots: false
+    });
 
     (function productQuickView() {
       var products = $('.item.product-index', container);
@@ -1280,17 +1264,6 @@ theme.FeaturedProducts = (function() {
          });
       });
     })();
-
-    $(document).on('shopify:section:unload', function(event) {
-      var target = $(event.target);
-      target.find('.product-collection-carousel').owlCarousel("destroy");
-      $(document).off('.product-collection-carousel');
-    });
-
-    $(document).on('shopify:section:load', function(event) {
-      initHomepageCarousel($(event.target).find('.product-collection-carousel'));
-    });
-
   }
 
   FeaturedProducts.prototype = _.assignIn({}, FeaturedProducts.prototype, {});
@@ -1342,68 +1315,6 @@ theme.FeaturedCollections = (function() {
   return FeaturedCollections;
 })();
 
-/*============================================================================
-  Image with Text Overlay (Parallax) on index
-==============================================================================*/
-theme.Parallax = (function() {
-  function Parallax(container) {
-
-    var $container = this.$container = $(container);
-
-    // Parallax scrolling backgrounds edit to work with new theme editor, building bgset url based on data-bgset.
-    var initParallaximage = function(ParallaxImages) {
-      ParallaxImages.each(function () {
-        var bgset = this.getAttribute("data-bgset").trim().split(",");
-
-        var bgset_srcs = bgset.map(function (src) {
-          return src.trim().split(" ")[0];
-        });
-
-        var bgset_widths = bgset.map(function (src) {
-          return src.trim().split(" ")[1].replace("w","") + "px";
-        });
-
-        var src = null;
-
-        bgset_widths.forEach(function (width, index) {
-          if ( !src && matchMedia("(max-width: " + width + ")").matches ) {
-            src = bgset_srcs[index];
-          }
-        });
-
-        if ( !src ) {
-          src = bgset_srcs[bgset_srcs.length - 1];
-        }
-
-        $(this).parallax({ imageSrc: src });
-      });
-    };
-
-   // Intitate parallax, the reinitiate on resize of browser to update bgset url
-    var parallax_images = $('.parallax-window');
-
-    initParallaximage(parallax_images);
-
-    window.addEventListener("resize", debounce(function () {
-      parallax_images.parallax("destroy");
-      initParallaximage(parallax_images);
-    }, 100));
-
-    $(document).on('shopify:section:unload', function(event) {
-      var target = $(event.target);
-      target.find('.parallax-window').parallax('destroy');
-      $(document).off('.parallax-window');
-    });
-
-    $(document).on('shopify:section:load', function(event) {
-      initParallaximage($(event.target).find('.parallax-window'));
-    });
-
-  }
-  Parallax.prototype = _.assignIn({}, Parallax.prototype, {});
-
-  return Parallax;
-})();
 
 /*============================================================================
   Map section on index
@@ -1628,9 +1539,6 @@ $(document).ready(function() {
     ==============================================================================*/
     $(document).on('shopify:section:load', function(event) {
 
-      $('.no-fouc').removeClass('no-fouc');
-      $('.load-wait').addClass('hide');
-
       // Responsive Navigation
       $.shifter({
         maxWidth: "980px"
@@ -1658,10 +1566,6 @@ $(document).ready(function() {
     });
 
   }());
-
-  /* Stop the flash of unstyled content */
-  $('.no-fouc').removeClass('no-fouc');
-  $('.load-wait').addClass('hide');
 
   /*============================================================================
   Shifter side navigation for mobile
@@ -1702,23 +1606,6 @@ $(document).ready(function() {
     ],
     navigation : false,
     pagination: true
-  });
-
-  $(".product-collection-carousel").owlCarousel({
-    itemsCustom : [
-      [0, 2],
-      [450, 2],
-      [600, 2],
-      [700, 2],
-      [1000, 4],
-      [1200, 4],
-      [1400, 4],
-      [1600, 5]
-    ],
-    lazyLoad : true,
-    navigation : true,
-    navigationText: ["",""],
-    pagination: false
   });
 
   // Custom Navigation Events

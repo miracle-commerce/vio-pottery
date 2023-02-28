@@ -2,7 +2,7 @@
 <div class="product-collection-carousel desktop-12 tablet-6 mobile-3">
   {% for product in collection.products limit: prod_limit %}
   <div class="product-car">
-    <div id="product-listing-{{ product.id }}" class="item product-index" data-product-id="{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+    <div id="product-listing-{{ product.id }}" class="item product-index" data-product-id="{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }} ">
       {% include 'product-listing' %}
     </div>
   </div>
@@ -11,3 +11,35 @@
 {% else %}
 {% include 'onboard-product' %}
 {% endif %}
+
+<style>
+  .product-collection-carousel:not(.flickity-enabled){
+    display: flex; 
+    overflow: hidden;
+  }
+  
+  .product-collection-carousel:not(.flickity-enabled) .product-car{
+    min-width: calc(50% - 20px);
+    width: calc(50% - 20px);
+    margin: 10px; 
+  }
+  
+  @media only screen and (min-width: 740px){
+    .product-collection-carousel:not(.flickity-enabled) .product-car{
+      width: calc(100% / 3 - 20px);
+    }
+  }
+  
+  @media only screen and (min-width: 1220px){
+    .product-collection-carousel:not(.flickity-enabled) .product-car{
+      width: calc(25% - 20px);
+    }
+  }
+  
+  @media only screen and (min-width: 1680px){
+    .product-collection-carousel:not(.flickity-enabled) .product-car{
+      min-width: calc(20% - 20px);
+      width: calc(20% - 20px);
+    }
+  }
+</style>

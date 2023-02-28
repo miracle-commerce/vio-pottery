@@ -63,7 +63,12 @@
         --nav-font-weight: {{nav_font.weight}};
       }
     {% endstyle %}
-
+    <style>
+      .slide_image{
+        max-height: 800px;
+        overflow: hidden;
+      }
+    </style>
     <!-- CSS
     ================================================== -->
     <link rel="preload" href="{{ 'font-awesome.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -118,12 +123,6 @@
             <div class="index-sections">
           {%- endif -%}
               {{ content_for_layout }}
-          {%- if template == 'index' -%}
-            </div>
-            <div class="load-wait">
-              <i class="fa fa-spinner fa-spin"></i>
-            </div>
-          {%- endif -%}
         {% else %}
           <div id="content" class="row">
             {% if template != 'index' %}
