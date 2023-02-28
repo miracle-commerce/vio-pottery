@@ -1,13 +1,8 @@
 {% assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
 <div class="homepage-section image-with-text-overlay parallax-{{ section.id }} index-section {% if section.settings.image != blank %}parallax parallax-window lazyload lazyload-fade{% endif %}no-fouc"
-{% if section.settings.image != blank %}
   data-section-type="parallax-section"
-  data-parallax="scroll"
-  data-bgset="{% include 'bgset', image: section.settings.image %}"
-  data-sizes="auto"
-{% endif %}
-data-section-id="{{ section.id }}" >
+  data-section-id="{{ section.id }}" >
   <div class="row">
     <div class="parallax-content desktop-12 tablet-6 mobile-3">
       <div class="parallax-text">
@@ -27,9 +22,10 @@ data-section-id="{{ section.id }}" >
 <div class="clear"></div>
 
 <style>
+  .parallax-{{ section.id }}{
+    background-image: url("{{section.settings.image | image_url: width: 1920}}")
+  }
   .parallax-{{ section.id }} div.row {
-    display: table;
-    height: {{ section.settings.section_height }}px;
     min-height: {{ section.settings.section_height }}px;
   }
   .parallax-{{ section.id }} .parallax-text h2 {
@@ -54,12 +50,6 @@ data-section-id="{{ section.id }}" >
   }
   .parallax-{{ section.id }} .parallax-text a.button:hover {
     opacity: 0.8;
-  }
-  .no-js .parallax-{{ section.id }} {
-    background-image: url('{{ section.settings.image | img_url: '1024x' }}');
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
   }
 
   @media screen and ( min-width: 1220px ) {

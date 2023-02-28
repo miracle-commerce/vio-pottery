@@ -2352,15 +2352,23 @@ ul.collection-tabs li:first-child a.active {
   z-index: 5;
 }
 
-.parallax .row {
-  display: table;
-  width: 100%;
+/* Styles for Image-with-text-overlay section */
+
+.image-with-text-overlay.parallax{
+  background-size: cover; 
+  background-position: center center; 
+  background-attachment: fixed;
 }
 
-.parallax {
-  position: relative;
-  width: 100%;
-  min-height: 100px;
+.image-with-text-overlay.parallax .row{
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.image-with-text-overlay.parallax .row::after{
+  display: none; 
 }
 
 .parallax-text {
@@ -2371,12 +2379,7 @@ ul.collection-tabs li:first-child a.active {
 }
 
 .parallax-content {
-  display: table-cell;
-  float: none !important;
-  vertical-align: middle;
-  text-align: center;
-  margin: 0 !important;
-  width: 100% !important;
+  text-align: center; 
 }
 
 .shopify-section-footer{
