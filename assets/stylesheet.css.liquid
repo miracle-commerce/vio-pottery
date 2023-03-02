@@ -7163,6 +7163,44 @@ div#bottom-footer {
   }
 }
 
+.product-collection-carousel .product-cars__row{
+  width: calc(50% - 20px);
+  margin: 10px; 
+}
+
+.product-collection-carousel .product-cars__row .product-car{
+  margin: 0; 
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 740px){
+  .product-collection-carousel .product-cars__row{
+    width: calc(100% / 3 - 20px);
+  }
+  .product-collection-carousel .product-cars__row .product-car{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1220px){
+  .product-collection-carousel .product-cars__row{
+    width: calc(25% - 20px);
+  }
+  .product-collection-carousel .product-cars__row .product-car{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1680px){
+  .product-collection-carousel .product-cars__row{
+    width: calc(20% - 20px);
+  }
+  .product-collection-carousel .product-cars__row .product-car{
+    width: 100%;
+  }
+}
+
 #newsletter.homepage-section #social-icons a{
   display: inline-block; 
   font-size: 16px; 

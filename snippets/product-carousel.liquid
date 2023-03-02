@@ -1,15 +1,33 @@
 {% if collection != blank %}
 <div class="product-collection-carousel desktop-12 tablet-6 mobile-3">
   {% for product in collection.products limit: prod_limit %}
-  <div class="product-car">
-    <div id="product-listing-{{ product.id }}" class="item product-index" data-product-id="{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }} ">
-      {% include 'product-listing' %}
-    </div>
-  </div>
+    {%- if rows > 1 -%}
+      {%- assign row_index_modulor = forloop.index | modulo: rows -%}
+      {%- assign start_row = false -%}
+      {%- assign end_row = false -%}
+      {%- if forloop.first or row_index_modulor == 1 -%}
+        {%- assign start_row = true -%}
+      {%- endif -%}
+      {%- if forloop.last or row_index_modulor == 0 -%}
+        {%- assign end_row = true -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if start_row -%}
+      <div class="product-cars__row" data-row="{{start_row}} - {{end_row}}">
+    {%- endif -%}
+        <div class="product-car">
+          <div id="product-listing-{{ product.id }}" class="item product-index" data-product-id="{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }} ">
+            {% include 'product-listing' %}
+          </div>
+        </div>
+    {%- if end_row -%}
+      </div>
+    {%- endif -%}
   {% endfor %}
 </div>
 {% else %}
-{% include 'onboard-product' %}
+  {% include 'onboard-product' %}
 {% endif %}
 
 <style>

@@ -9,7 +9,7 @@
     {% if section.settings.homepage_product_display == 'grid' %}
       {% include 'product-grid' with collection %}
     {% elsif section.settings.homepage_product_display == 'carousel' %}
-      {% include 'product-carousel' with collection %}
+      {% include 'product-carousel' with collection, rows: section.settings.count_of_rows %}
     {% endif %}
   </div>
 </div>
@@ -68,6 +68,19 @@
       "label": "Products per row",
 	    "info": "Grid use only",
       "default": 4
+    },
+    {
+      "type":"header",
+      "content":"Carousel Settings"
+    },
+    {
+      "type":"range",
+      "id":"count_of_rows",
+      "label":"Count of Rows",
+      "min": 1, 
+      "max": 3,
+      "step": 1,
+      "default": 1
     }
   ],
   "presets": [
