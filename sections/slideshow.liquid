@@ -37,13 +37,13 @@
               {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
               {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
-              <img class="slideshow__image slideshow__image--{{ block.id }} lazyload lazyload-fade"
-              data-src="{{ img_url }}"
-              data-sizes="auto"
-              data-parent-fit="cover"
-              alt="{{ block.settings.image.alt | escape }}">
-              {% comment %} <div class="box-ratio" style="padding-bottom: {{ image_box_ratio }};">
-              </div> {% endcomment %}
+              <div class="box-ratio" style="padding-bottom: {{ image_box_ratio }};">
+                <img class="slideshow__image slideshow__image--{{ block.id }} lazyload lazyload-fade"
+                data-src="{{ img_url }}"
+                data-sizes="auto"
+                data-parent-fit="cover"
+                alt="{{ block.settings.image.alt | escape }}">
+              </div>
 
               <noscript>
                 <img src="{{ block.settings.image | img_url: '1024x' }}" alt="{{ block.settings.image.alt | escape }}" class="slideshow__image slideshow__image--{{ block.id }}">

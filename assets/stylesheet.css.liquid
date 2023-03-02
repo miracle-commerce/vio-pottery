@@ -7140,29 +7140,6 @@ div#bottom-footer {
   display: block;
 }
 
-.product-collection-carousel .product-car{
-  width: calc(50% - 20px);
-  margin: 10px; 
-}
-
-@media only screen and (min-width: 740px){
-  .product-collection-carousel .product-car{
-    width: calc(100% / 3 - 20px);
-  }
-}
-
-@media only screen and (min-width: 1220px){
-  .product-collection-carousel .product-car{
-    width: calc(25% - 20px);
-  }
-}
-
-@media only screen and (min-width: 1680px){
-  .product-collection-carousel .product-car{
-    width: calc(20% - 20px);
-  }
-}
-
 .product-collection-carousel .product-cars__row{
   width: calc(50% - 20px);
   margin: 10px; 
@@ -7222,6 +7199,13 @@ div#bottom-footer {
   height: 100%;
   object-fit: cover;
   object-position: center center; 
+}
+
+@media only screen and (max-width: 1023px){
+  .slideshow-section .slide_image .box-ratio{
+    padding-bottom: 0px !important;
+    height: 100%;
+  }        
 }
 
 @media only screen and (min-width: 1024px){
