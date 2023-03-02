@@ -129,8 +129,8 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="{{ 'eventemitter3.min.js' | asset_url }}" async></script>
     <script src="{{ 'jquery.fs.shifter.js' | asset_url }}" async></script>
+    {% comment %} <script src="{{ 'option_selection.js' | shopify_asset_url }}" async></script> {% endcomment %}
     <script src="{{ 'theme.js' | asset_url }}" async></script>
-    <script src="{{ 'option_selection.js' | shopify_asset_url }}" async></script>
     
     {% if template contains 'customers' %}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" async></script>
