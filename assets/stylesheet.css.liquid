@@ -7214,12 +7214,7 @@ div#bottom-footer {
 .slideshow-section .slide_image{
   background-color: #f3f3f3;
   height: 600px;
-}
-
-@media only screen and (min-width: 1024px){
-  .slideshow-section .slide_image{
-    height: 800px;
-  }
+  overflow: hidden;
 }
 
 .slideshow-section .slide_image img.slideshow__image{
@@ -7227,4 +7222,17 @@ div#bottom-footer {
   height: 100%;
   object-fit: cover;
   object-position: center center; 
+}
+
+@media only screen and (min-width: 1024px){
+  .slideshow-section .slide_image{
+    height: auto;
+  }
+
+  .slideshow-section .slide_image img.slideshow__image{
+    width: 100%; 
+    height: auto;
+    object-fit: cover;
+    object-position: center center; 
+  }
 }
