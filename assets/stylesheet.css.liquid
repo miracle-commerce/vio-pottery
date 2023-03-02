@@ -952,10 +952,10 @@
 * {
   margin: 0;
 }
-:focus {
+/* :focus {
   outline: {{ settings.keyboard_focus }} {{ settings.focus_border_style }} {{ settings.focus_border_weight }}px !important;
   outline-offset: -{{ settings.focus_border_weight }}px !important;
-}
+} */
 @media (pointer: coarse) {
   *:focus {
     outline: none;
@@ -6886,25 +6886,25 @@ button.flickity-button:disabled {
 .thumbnail-slider  .product-single__thumbnails-item:hover,
 .product-single__thumbnails-item.active-slide,
 .product-single__thumbnails-item.is-nav-selected {
-  outline: 1px solid {{ settings.text_color | color_lighten: 40 }};
-  outline-offset: -1px;
+  /* outline: 1px solid {{ settings.text_color | color_lighten: 40 }};
+  outline-offset: -1px; */
   cursor: pointer;
 }
-.product-single__thumbnails-item:focus,
+/* .product-single__thumbnails-item:focus,
 .product-single__thumbnail--product-template:focus {
   outline: {{ settings.keyboard_focus }} {{ settings.focus_border_style }} {{ settings.focus_border_weight }}px !important;
   outline-offset: -{{ settings.focus_border_weight }}px !important;
-}
+} */
 .product-single__thumbnails-item.active-slide img,
 .product-single__thumbnails-item.is-nav-selected img,
 .thumbnail-slider  .product-single__thumbnails-item:hover img,
 .product-single__thumbnail--product-template:focus img {
   opacity: 1.0 !important;
 }
-:focus, .focus-visible {
+/* :focus, .focus-visible {
   outline: {{ settings.keyboard_focus }} {{ settings.focus_border_style }} {{ settings.focus_border_weight }}px !important;
   outline-offset: -{{ settings.focus_border_weight }}px !important;
-}
+} */
 .prod-image > a,
 #product-loop .prod-image > a,
 .product-loop .prod-image > a,
