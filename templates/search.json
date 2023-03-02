@@ -1,6 +1,5 @@
 {
-  "name":"Default Search Template",
-  "sections":{
+  "sections": {
     "main": {
       "type": "search-template",
       "settings": {
@@ -9,7 +8,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

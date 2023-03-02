@@ -1,11 +1,12 @@
 {
-    "name":"Default Register Template",
-    "sections":{
-      "main":{
-        "type":"main-register"
+  "sections": {
+    "main": {
+      "type": "main-register",
+      "settings": {
       }
-    },
-    "order":[
-      "main"
-    ]
-  }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

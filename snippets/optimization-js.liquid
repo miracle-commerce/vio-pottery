@@ -60,7 +60,7 @@
     function wnwAnalytics() {
       var script2 = document.querySelectorAll(".analytics");
       script2.forEach(function(analyticsScript) {
-        {% comment %} trekkie.integrations=false; {% endcomment %}
+        trekkie.integrations=false;
         s = document.createElement("script");
         s.innerHTML = analyticsScript.innerHTML;
         insertAfter(s, analyticsScript);

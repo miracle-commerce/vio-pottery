@@ -1,11 +1,12 @@
 {
-    "name":"Default Addresses Template",
-    "sections":{
-      "main":{
-        "type":"main-addresses"
+  "sections": {
+    "main": {
+      "type": "main-addresses",
+      "settings": {
       }
-    },
-    "order":[
-      "main"
-    ]
-  }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

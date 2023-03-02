@@ -1,8 +1,9 @@
 {
-  "name":"About Page Template",
-  "sections":{
-    "main":{
-      "type":"main-page"
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
     },
     "about-video": {
       "type": "aboutVideo",
@@ -18,7 +19,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main",
     "about-video"
   ]

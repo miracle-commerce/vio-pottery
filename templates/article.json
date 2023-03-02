@@ -1,6 +1,5 @@
 {
-  "name":"Default Article Template",
-  "sections":{
+  "sections": {
     "main": {
       "type": "article-template",
       "settings": {
@@ -9,7 +8,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

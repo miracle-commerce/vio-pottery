@@ -1,6 +1,5 @@
 {
-  "name":"Default Product Template",
-  "sections":{
+  "sections": {
     "main": {
       "type": "collection-template",
       "settings": {
@@ -16,7 +15,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

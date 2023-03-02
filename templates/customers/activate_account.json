@@ -1,11 +1,12 @@
 {
-  "name":"Default Active account Template",
-  "sections":{
-    "main":{
-      "type":"main-active-account"
+  "sections": {
+    "main": {
+      "type": "main-active-account",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

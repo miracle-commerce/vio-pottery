@@ -1,11 +1,12 @@
 {
-  "name":"Default Login Template",
-  "sections":{
-    "main":{
-      "type":"main-login"
+  "sections": {
+    "main": {
+      "type": "main-login",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

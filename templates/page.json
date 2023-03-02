@@ -1,11 +1,12 @@
 {
-  "name":"Default Page Template",
-  "sections":{
-    "main":{
-      "type":"main-page"
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

@@ -1,11 +1,12 @@
 {
-  "name":"Books Collection Template",
-  "sections":{
-    "main":{
-      "type":"books-collection-template"
+  "sections": {
+    "main": {
+      "type": "books-collection-template",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

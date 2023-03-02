@@ -1,8 +1,9 @@
 {
-  "name":"Kew-Colors Page Template",
-  "sections":{
-    "main":{
-      "type":"main-page"
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
     },
     "kew-color-list": {
       "type": "kew-color-list",
@@ -225,7 +226,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main",
     "kew-color-list"
   ]

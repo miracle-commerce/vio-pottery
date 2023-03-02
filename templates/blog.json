@@ -1,6 +1,5 @@
 {
-  "name":"Main Blog Template",
-  "sections":{
+  "sections": {
     "main": {
       "type": "blog-template",
       "settings": {
@@ -10,7 +9,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

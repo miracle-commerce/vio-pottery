@@ -1,6 +1,5 @@
 {
-  "name":"Default Index Templates", 
-  "wrapper":"div.index-sections",
+  "wrapper": "div.index-sections",
   "sections": {
     "1522097556070": {
       "type": "newsletter",
@@ -12,7 +11,7 @@
         "subheading_font_weight": "bold",
         "subheading_color": "#ffffff",
         "newsletter_color": "#ffffff",
-        "newsletter_background": "#beeaec",
+        "newsletter_background": "#be8adf",
         "newsletter_button_color": "#ffffff",
         "newsletter_button": "#000000",
         "newsletter_button_hover": "#cccccc",
@@ -43,7 +42,7 @@
         "1600557845898": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_2722_50214b34-3296-478c-b986-cc3fa8e9119e.jpg",
+            "image": "shopify:\/\/shop_images\/imagejpeg_0.jpg",
             "heading": "",
             "subheading": "",
             "slide_text_color": "#000000",
@@ -60,7 +59,7 @@
         "1597245731282": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/PXL_20230109_230048674.jpg",
+            "image": "shopify:\/\/shop_images\/IMG_1558.jpg",
             "heading": "",
             "subheading": "",
             "slide_text_color": "#000000",
@@ -77,7 +76,7 @@
         "02e3b9d6-fe27-44b8-afdc-43b3ff2ec22f": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_4015.jpg",
+            "image": "shopify:\/\/shop_images\/FullSizeRender_2.jpg",
             "heading": "",
             "subheading": "",
             "slide_text_color": "#000000",
@@ -113,9 +112,9 @@
       "settings": {
         "heading": "The Kew Pottery Collection",
         "homepage_collection": "kew-collection",
-        "homepage_product_limit": 30,
+        "homepage_product_limit": 22,
         "homepage_product_display": "carousel",
-        "products_per_row": 2
+        "products_per_row": 5
       }
     },
     "161798618150836ef0": {
@@ -200,6 +199,7 @@
     },
     "1522108399575": {
       "type": "featured-product",
+      "disabled": true,
       "settings": {
         "heading": "Featured Product",
         "featured_product": "somerset-kew-chalice-bowl",

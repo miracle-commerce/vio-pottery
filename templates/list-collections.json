@@ -1,11 +1,12 @@
 {
-  "name":"Default Collections List",
-  "sections":{
-    "main":{
-      "type":"collections-list-template"
+  "sections": {
+    "main": {
+      "type": "collections-list-template",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

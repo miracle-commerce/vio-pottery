@@ -1,6 +1,5 @@
 {
-  "name":"Default Product Template",
-  "sections":{
+  "sections": {
     "main": {
       "type": "product-template",
       "settings": {
@@ -31,7 +30,7 @@
       }
     }
   },
-  "order":[
+  "order": [
     "main",
     "recommendations"
   ]

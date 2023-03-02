@@ -68,7 +68,17 @@
         max-height: 800px;
         overflow: hidden;
       }
+      #newsletter.homepage-section #social-icons a{
+        display: inline-block; 
+        font-size: 16px; 
+        padding: 0 5px;
+      }
+      
+      #newsletter.homepage-section #social-icons a:hover{
+        border: none;
+      }
     </style>
+    {% render 'critical-css-home' %}
     <!-- CSS
     ================================================== -->
     <link rel="preload" href="{{ 'font-awesome.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -88,9 +98,9 @@
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="{{ 'eventemitter3.min.js' | asset_url }}" async></script>
+    <script src="{{ 'jquery.fs.shifter.js' | asset_url }}" async></script>
     <script src="{{ 'theme.js' | asset_url }}" async></script>
     <script src="{{ 'option_selection.js' | shopify_asset_url }}" async></script>
-    <script src="{{ 'jquery.fs.shifter.js' | asset_url }}" async></script>
     
     {% if template contains 'customers' %}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" async></script>
@@ -99,7 +109,7 @@
 
     {% comment %}{{ content_for_header }}{% endcomment %}
     {{ content_for_header | replace : ' href=', ' data-href=' | replace : "addEventListener('load'", "addEventListener('wnw_load'" | replace : "document.addEventListener('DOMContentLoaded", "document.addEventListener('DOMContentLoaded2" | replace : 'defer="defer" src=', 'type="lazyload2" defer="defer" data-src=' }}
-    {% comment %} <script>var trekkie=[];trekkie.integrations=!0;</script> {% endcomment %}
+    <script>var trekkie=[];trekkie.integrations=!0;</script>
 
   </head>
 

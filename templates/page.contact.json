@@ -1,11 +1,12 @@
 {
-  "name":"Contact Page Template",
-  "sections":{
-    "main":{
-      "type":"main-contact"
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

@@ -1,11 +1,12 @@
 {
-  "name":"Default Cart Template",
-  "sections":{
-    "main":{
-      "type":"main-cart"
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }

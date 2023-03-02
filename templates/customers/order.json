@@ -1,11 +1,12 @@
 {
-  "name":"Default Order Template",
-  "sections":{
-    "main":{
-      "type":"main-order"
+  "sections": {
+    "main": {
+      "type": "main-order",
+      "settings": {
+      }
     }
   },
-  "order":[
+  "order": [
     "main"
   ]
 }
